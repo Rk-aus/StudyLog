@@ -5,9 +5,6 @@ import java.time.LocalDateTime;
 
 public class StudyTask {
     private int studyTime;
-    private int studyStartTime;
-    private int studyEndTime;
-    private boolean isStudying;
 
     private LocalDateTime studyStartDateTime;
     private LocalDateTime studyEndDateTime;
@@ -15,12 +12,11 @@ public class StudyTask {
     private String studyContent;
     private StudySubject studySubject;
 
+    private StudyLog studyLog;
+
     // EFFECTS: constructs a StudyTask object with studyTime 0
     public StudyTask() {
         studyTime = 0;
-        studyStartTime = 0;
-        studyEndTime = 0;
-        isStudying = false;
         studyStartDateTime = LocalDateTime.now();
         studyEndDateTime = LocalDateTime.now();
         studyContent = null;
@@ -30,14 +26,6 @@ public class StudyTask {
     // getters
     public int getStudyTime() {
         return this.studyTime;
-    }
-
-    public int getStudyStartTime() {
-        return this.studyStartTime;
-    }
-
-    public int getStudyEndTime() {
-        return this.studyEndTime;
     }
 
     public LocalDateTime getStudyStartDateTime() {
@@ -69,7 +57,7 @@ public class StudyTask {
 
     // EFFECTS: saves the study to the StudyLog
     public void saveStudy() {
-
+        studyLog.addStudyTask(this);
     }
 
 //    // EFFECTS: saves the study to the StudyLog by adding information manually

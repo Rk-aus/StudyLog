@@ -11,10 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class StudyTaskTest {
 
     StudyTask testStudyTask;
+    StopWatch testStopWatch;
 
     @BeforeEach
     void setup(){
         testStudyTask = new StudyTask();
+        testStopWatch = new StopWatch();
     }
 
 
@@ -29,11 +31,20 @@ public class StudyTaskTest {
 
     @Test
     void testStartStudy() {
+        long studyTime = testStopWatch.getStudyEndTime() - testStopWatch.getStudyStartTime();
         assertEquals(0, testStudyTask.getStudyTime());
         testStudyTask.startStudy();
-
+        assertEquals(studyTime, testStudyTask.getStudyTime());
         testStudyTask.pauseStudy();
-        assertEquals(testStudyTask.getStudyEndTime() - testStudyTask.getStudyStartTime(), testStudyTask.getStudyTime());
+        assertEquals(studyTime, testStudyTask.getStudyTime());
+    }
+
+    @Test
+    void testSaveStudy() {
+        long studyTime = testStopWatch.getStudyEndTime() - testStopWatch.getStudyStartTime();
+        testStudyTask.startStudy();
+        testStudyTask.pauseStudy();
+        assertEquals(studyTime, testStudyTask.getStudyTime());
     }
 
 

@@ -7,7 +7,6 @@ public class StudyLog {
 
     private List<StudyTask> studyList;
 
-
     // EFFECTS: constructs a StudyLog object
     public StudyLog() {
         this.studyList = new ArrayList<>();
