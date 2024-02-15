@@ -23,14 +23,9 @@ public class StudyLog {
         this.studyList.add(studiedMaterial);
     }
 
-    // EFFECTS: print all the saved StudiedMaterial
-    public void viewStudyLog() {
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: deletes a StudyTask from the StudyLog
-    public void deleteStudyTask(StudiedMaterial studiedMaterial) {
-        this.studyList.remove(studiedMaterial);
-    }
+//    // MODIFIES: this
+//    // EFFECTS: deletes a StudyTask from the StudyLog
+//    public void deleteStudyTask(StudiedMaterial studiedMaterial) {
+//        this.studyList.remove(studiedMaterial);
+//    }
 }

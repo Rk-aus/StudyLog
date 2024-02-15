@@ -19,11 +19,13 @@ public class StudySubjectList {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the given subject to the list
+    // EFFECTS: adds the given StudySubject to the list
     public void addSubject(StudySubject subject) {
         this.subjectList.add(subject);
     }
 
+    // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject
+    //          if the StudySubject is not found, throw a NoSuchNameException
     public StudySubject findSubject(String name) throws NoSuchNameException {
         for (StudySubject subject: this.subjectList) {
             if (subject.getSubject().equals(name)) {

@@ -31,13 +31,13 @@ class StudyLogTest {
         assertEquals(2, testStudyLog.getStudyList().size());
     }
 
-    @Test
-    void testDeleteStudyTask() {
-        testStudyLog.addStudyTask(testStudyTask0);
-        testStudyLog.addStudyTask(testStudyTask1);
-        testStudyLog.deleteStudyTask(testStudyTask0);
-        assertEquals(1, testStudyLog.getStudyList().size());
-        testStudyLog.deleteStudyTask(testStudyTask1);
-        assertEquals(0, testStudyLog.getStudyList().size());
-    }
+//    @Test
+//    void testDeleteStudyTask() {
+//        testStudyLog.addStudyTask(testStudyTask0);
+//        testStudyLog.addStudyTask(testStudyTask1);
+//        testStudyLog.deleteStudyTask(testStudyTask0);
+//        assertEquals(1, testStudyLog.getStudyList().size());
+//        testStudyLog.deleteStudyTask(testStudyTask1);
+//        assertEquals(0, testStudyLog.getStudyList().size());
+//    }
 }

@@ -10,8 +10,6 @@ public class StudiedMaterial {
     private StudySubject studySubject;
     private String studyContent;
 
-    private StudyLog studyLog;
-
     // EFFECTS: constructs a StudyTask object with studyTime 0
     public StudiedMaterial() {
         studyTime = 0;
@@ -63,12 +61,13 @@ public class StudiedMaterial {
         this.studySubject = studySubject;
     }
 
+    // EFFECTS: converts the studyTime to int
     public String convertStudyTime() {
         int second = (int) this.getStudyTime() / 1000;
         String seconds = String.valueOf(second);
-        int minute = (int) second / 60;
+        int minute = second / 60;
         String minutes = setMinutes(second, minute);
-        int hour = (int) second / 3600;
+        int hour = second / 3600;
         String hours = setHours(second, minute, hour);
 
         if (hour >= 1) {
@@ -84,12 +83,11 @@ public class StudiedMaterial {
         int remainderSecond0 = second - 60 * minute;
         String remainderSecond0String;
         if (String.valueOf(remainderSecond0).length() == 1) {
-            remainderSecond0String = "0" + String.valueOf(remainderSecond0);
+            remainderSecond0String = "0" + remainderSecond0;
         } else {
             remainderSecond0String = String.valueOf(remainderSecond0);
         }
-        String minutes = minute + ":" + remainderSecond0String;
-        return minutes;
+        return minute + ":" + remainderSecond0String;
     }
 
     public String setHours(int second, int minute, int hour) {
@@ -97,18 +95,17 @@ public class StudiedMaterial {
         int remainderSecond1 = second - 3600 * hour - 60 * remainderMinute;
         String remainderMinuteString;
         if (String.valueOf(remainderMinute).length() == 1) {
-            remainderMinuteString = "0" + String.valueOf(remainderMinute);
+            remainderMinuteString = "0" + remainderMinute;
         } else {
             remainderMinuteString = String.valueOf(remainderMinute);
         }
         String remainderSecond1String;
         if (String.valueOf(remainderSecond1).length() == 1) {
-            remainderSecond1String = "0" + String.valueOf(remainderSecond1);
+            remainderSecond1String = "0" + remainderSecond1;
         } else {
             remainderSecond1String = String.valueOf(remainderSecond1);
         }
-        String hours = hour + ":" + remainderMinuteString + ":" + remainderSecond1String;
-        return hours;
+        return hour + ":" + remainderMinuteString + ":" + remainderSecond1String;
     }
 
 //    // EFFECTS: modifies the StudyTask manually

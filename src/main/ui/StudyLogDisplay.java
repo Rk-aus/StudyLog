@@ -1,6 +1,5 @@
 package ui;
 
-import exceptions.InvalidInputException;
 import exceptions.NoSuchNameException;
 import model.StudiedMaterial;
 import model.StudyLog;
@@ -12,24 +11,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
-// Taken and modified from TellerApp
+// Inspired by TellerApp
 
 public class StudyLogDisplay {
 
     private StudyLog studyLog;
-    private StudySubjectList subjectList;
     private StudiedMaterial studyingMaterial;
+    private StudySubjectList subjectList;
 
     private Scanner input;
 
 
-    // Taken and modified from TellerApp
+    // Inspired by TellerApp
     // EFFECTS: runs the StudyLogDisplay
     public StudyLogDisplay() {
         runDisplay();
     }
 
-    // Taken and modified from TellerApp
+    // Inspired by TellerApp
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runDisplay() {
@@ -37,7 +36,7 @@ public class StudyLogDisplay {
         subjectList = new StudySubjectList();
 
         boolean running = true;
-        String command = null;
+        String command;
 
         input = new Scanner(System.in);
 
@@ -45,7 +44,7 @@ public class StudyLogDisplay {
             displayAction();
             command = input.next();
             command = command.toLowerCase();
-            if (command == "leave") {
+            if (command.equals("leave")) {
                 running = false;
             } else {
                 processCommand(command);
@@ -53,7 +52,7 @@ public class StudyLogDisplay {
         }
     }
 
-    // Taken and modified from TellerApp
+    // Inspired by TellerApp
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -74,7 +73,7 @@ public class StudyLogDisplay {
         }
     }
 
-    // Taken and modified from TellerApp
+    // Inspired by TellerApp
     // EFFECTS: displays menu of actions to user
     private void displayAction() {
         System.out.println("\nSelect from:");
@@ -84,7 +83,8 @@ public class StudyLogDisplay {
         System.out.println("\tlog -> View Study Log\n");
     }
 
-    // Taken and modified from TellerApp
+    // Inspired by TellerApp
+    // MODIFIES: this
     // EFFECTS: adds StudySubject to StudySubjectList
     private void addSubject() {
         System.out.print("\nPlease enter the Subject name: ");
@@ -97,8 +97,9 @@ public class StudyLogDisplay {
         System.out.println("Successfully added " + newSubject.getSubject() + " to Subjects!\n");
     }
 
-    // Taken and modified from TellerApp
-    // EFFECTS: starts the study and saves it to StudySubjectList
+    // Inspired by TellerApp
+    // MODIFIES: this
+    // EFFECTS: starts the study and saves it to StudyLog
     private void startStudy() throws NoSuchNameException {
         System.out.print("\nPlease enter the name of the Subject you will study: ");
         studyingMaterial = new StudiedMaterial();
@@ -114,6 +115,9 @@ public class StudyLogDisplay {
         finish(startTime);
     }
 
+    // MODIFIES: this
+    // EFFECTS: finishes the study if the user inputs "finish" and saves it to StudyLog
+    //          if the user inputs anything else, print "Please enter again"
     private void finish(long startTime) {
         boolean studying = true;
         String finish = input.next();
@@ -128,20 +132,19 @@ public class StudyLogDisplay {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: finishes the study and saves it to StudyLog
     private void finishStudy(long startTime) {
         studyingMaterial.setStudyTime(System.currentTimeMillis() - startTime);
         studyingMaterial.setStudyEndDateTime(LocalDateTime.now());
         fillStudyContent();
         this.studyLog.addStudyTask(studyingMaterial);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        System.out.println("Study Subject: " + studyingMaterial.getStudySubject().getSubject());
-        System.out.println("Study Content: " + studyingMaterial.getStudyContent());
-        System.out.println("Started from: " + formatter.format(studyingMaterial.getStudyStartDateTime()));
-        System.out.println("Ended at:" + formatter.format(studyingMaterial.getStudyEndDateTime()));
-        System.out.println("Total Study Time: " + studyingMaterial.convertStudyTime());
+        printStudiedMaterial(studyingMaterial);
     }
 
+    // MODIFIES: studyingMaterial
+    // MODIFIES: this
+    // EFFECTS: fill in the study content using the user input
     private void fillStudyContent() {
         System.out.println("Please enter what you studied: ");
         String content = input.next();
@@ -150,7 +153,17 @@ public class StudyLogDisplay {
         System.out.println("Great job!");
     }
 
+    // EFFECTS: prints the given StudiedMaterial
+    private void printStudiedMaterial(StudiedMaterial studyingMaterial) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println("Study Subject: " + studyingMaterial.getStudySubject().getSubject());
+        System.out.println("Study Content: " + studyingMaterial.getStudyContent());
+        System.out.println("Started from: " + formatter.format(studyingMaterial.getStudyStartDateTime()));
+        System.out.println("Ended at:" + formatter.format(studyingMaterial.getStudyEndDateTime()));
+        System.out.println("Total Study Time: " + studyingMaterial.convertStudyTime() + "\n");
+    }
 
+    // EFFECTS: prints the StudySubjectList
     private void viewSubjectList() {
         System.out.println("\nCurrent Subjects are:");
         for (StudySubject s : this.subjectList.getSubjectList()) {
@@ -158,10 +171,12 @@ public class StudyLogDisplay {
         }
     }
 
+    // EFFECTS: prints the StudyLog
     private void viewStudyLog() {
         List<StudiedMaterial> studyList = this.studyLog.getStudyList();
-        for (StudiedMaterial m: studyList) {
-            System.out.println();
+        System.out.println("\nStudy Log: ");
+        for (StudiedMaterial studiedMaterial: studyList) {
+            printStudiedMaterial(studiedMaterial);
         }
     }
 }

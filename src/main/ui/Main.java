@@ -1,10 +1,7 @@
 package ui;
 
-import model.StudyLog;
-
 public class Main {
     public static void main(String[] args) {
-        StudyLog studyLog = new StudyLog();
         StudyLogDisplay studyLogDisplay = new StudyLogDisplay();
 
 
