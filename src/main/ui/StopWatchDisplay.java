@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-// The Scanner input is from TellerApp
+
 
 public class StopWatchDisplay {
 
@@ -45,13 +45,11 @@ public class StopWatchDisplay {
 //        command = command.toLowerCase();
 
 //        Screen screen = new DefaultTerminalFactory().createScreen();
-//
 //        KeyStroke stroke = screen.pollInput();
 //
 //        if (stroke == null) {
 //            sw.pauseStopWatch();
 //        }
-
         while (sw.isStudying()) {
             long timeInterval = (System.currentTimeMillis() - time) / 1000;
             Integer second = (int) timeInterval;
@@ -61,8 +59,8 @@ public class StopWatchDisplay {
             String minutes = minute + ":" + remainderSecond0;
 
             Integer hour = (int) timeInterval / 3600;
-            Integer remainderSecond1 = second - 3600 * hour;
-            Integer remainderMinute = minute - 60 * hour;
+            int remainderMinute = minute - 60 * hour;
+            int remainderSecond1 = second - 3600 * hour - 60 * remainderMinute;
             String hours = hour + ":" + remainderMinute + ":" + remainderSecond1;
 
             if (hour >= 1) {

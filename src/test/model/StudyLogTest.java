@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class StudyLogTest {
 
     private StudyLog testStudyLog;
-    private StudyTask testStudyTask0;
-    private StudyTask testStudyTask1;
+    private StudiedMaterial testStudyTask0;
+    private StudiedMaterial testStudyTask1;
 
     @BeforeEach
     void setup() {
         testStudyLog = new StudyLog();
-        testStudyTask0 = new StudyTask();
-        testStudyTask1 = new StudyTask();
+        testStudyTask0 = new StudiedMaterial();
+        testStudyTask1 = new StudiedMaterial();
     }
 
     @Test

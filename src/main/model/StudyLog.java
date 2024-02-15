@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StudyLog {
 
-    private List<StudyTask> studyList;
+    private List<StudiedMaterial> studyList;
 
     // EFFECTS: constructs a StudyLog object
     public StudyLog() {
@@ -13,24 +13,24 @@ public class StudyLog {
     }
 
     // getters
-    public List<StudyTask> getStudyList() {
+    public List<StudiedMaterial> getStudyList() {
         return this.studyList;
     }
 
     // MODIFIES: this
     // EFFECTS: adds a StudyTask to the StudyLog
-    public void addStudyTask(StudyTask studyTask) {
-        this.studyList.add(studyTask);
+    public void addStudyTask(StudiedMaterial studiedMaterial) {
+        this.studyList.add(studiedMaterial);
     }
 
-    // EFFECTS: shows the list of StudyTask
-    public StudyLog viewStudyLog() {
-        return null;
+    // EFFECTS: print all the saved StudiedMaterial
+    public void viewStudyLog() {
+
     }
 
     // MODIFIES: this
     // EFFECTS: deletes a StudyTask from the StudyLog
-    public void deleteStudyTask(StudyTask studyTask) {
-        this.studyList.remove(studyTask);
+    public void deleteStudyTask(StudiedMaterial studiedMaterial) {
+        this.studyList.remove(studiedMaterial);
     }
 }
