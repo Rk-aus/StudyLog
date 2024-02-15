@@ -33,15 +33,15 @@ public class StudySubjectList {
         throw new NoSuchNameException();
     }
 
-    // REQUIRES: the given subject is in the list
-    // MODIFIES: this
-    // EFFECTS: deletes the given subject to the list
-    public void deleteSubject(StudySubject subject) {
-        this.subjectList.remove(subject);
-    }
-
-    // EFFECTS: print all the saved StudySubject
-    public void viewSubjectList() {
-
-    }
+//    // REQUIRES: the given subject is in the list
+//    // MODIFIES: this
+//    // EFFECTS: deletes the given subject to the list
+//    public void deleteSubject(StudySubject subject) {
+//        this.subjectList.remove(subject);
+//    }
+//
+//    // EFFECTS: print all the saved StudySubject
+//    public void viewSubjectList() {
+//
+//    }
 }

@@ -3,16 +3,20 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class StudiedMaterialTest {
 
     StudiedMaterial testStudiedMaterial;
+    StudySubject testStudySubject;
 
     @BeforeEach
     void setup(){
         testStudiedMaterial = new StudiedMaterial();
+        testStudySubject = new StudySubject();
     }
 
     @Test
@@ -22,6 +26,32 @@ public class StudiedMaterialTest {
         assertNull(testStudiedMaterial.getStudyEndDateTime());
         assertNull(testStudiedMaterial.getStudyContent());
         assertNull(testStudiedMaterial.getStudySubject());
+    }
+
+    @Test
+    void testSetStudyStartDateTime() {
+        LocalDateTime time = LocalDateTime.now();
+        testStudiedMaterial.setStudyStartDateTime(time);
+        assertEquals(time, testStudiedMaterial.getStudyStartDateTime());
+    }
+
+    @Test
+    void testSetStudyEndDateTime() {
+        LocalDateTime time = LocalDateTime.now();
+        testStudiedMaterial.setStudyEndDateTime(time);
+        assertEquals(time, testStudiedMaterial.getStudyEndDateTime());
+    }
+
+    @Test
+    void testSetStudyContent() {
+        testStudiedMaterial.setStudyContent("test");
+        assertEquals("test", testStudiedMaterial.getStudyContent());
+    }
+
+    @Test
+    void testSetStudySubject() {
+        testStudiedMaterial.setStudySubject(testStudySubject);
+        assertEquals(testStudySubject, testStudiedMaterial.getStudySubject());
     }
 
     @Test

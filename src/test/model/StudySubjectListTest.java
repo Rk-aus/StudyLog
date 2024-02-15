@@ -67,9 +67,11 @@ public class StudySubjectListTest {
     void testFindSubjectFound() {
         testStudySubjectList.addSubject(testStudySubject0);
         testStudySubjectList.addSubject(testStudySubject1);
-        testStudySubject1.setSubject("test");
+        testStudySubject0.setSubject("Physics");
+        testStudySubject1.setSubject("Math");
         try {
-            testStudySubjectList.findSubject("test");
+            StudySubject subject = testStudySubjectList.findSubject("Math");
+            assertEquals(testStudySubject1, subject);
             // expected
         } catch (NoSuchNameException e) {
             fail("Expected not to run");
