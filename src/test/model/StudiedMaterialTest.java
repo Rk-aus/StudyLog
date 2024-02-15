@@ -3,20 +3,16 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class StudiedMaterialTest {
 
     StudiedMaterial testStudiedMaterial;
-    StopWatch testStopWatch;
 
     @BeforeEach
     void setup(){
         testStudiedMaterial = new StudiedMaterial();
-        testStopWatch = new StopWatch();
     }
 
 
