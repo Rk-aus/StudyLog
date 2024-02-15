@@ -15,7 +15,6 @@ public class StudiedMaterialTest {
         testStudiedMaterial = new StudiedMaterial();
     }
 
-
     @Test
     void testStudiedMaterial() {
         assertEquals(0, testStudiedMaterial.getStudyTime());
