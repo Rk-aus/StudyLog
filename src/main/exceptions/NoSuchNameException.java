@@ -1,4 +1,4 @@
 package exceptions;
 
-public class NoSuchNameException extends Exception {
+public class NoSuchNameException extends InvalidInputException {
 }

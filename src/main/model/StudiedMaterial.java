@@ -1,22 +1,25 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class StudiedMaterial {
     private long studyTime;
-
     private LocalDateTime studyStartDateTime;
     private LocalDateTime studyEndDateTime;
     private StudySubject studySubject;
     private String studyContent;
+    private ArrayList<StudiedMaterial> studyLog;
 
-    // EFFECTS: constructs a StudyTask object with studyTime 0
+
+    // EFFECTS: constructs a StudiedMaterial object with studyTime 0
     public StudiedMaterial() {
-        studyTime = 0;
-        studyStartDateTime = null;
-        studyEndDateTime = null;
-        studyContent = null;
-        studySubject = null;
+        this.studyTime = 0;
+        this.studyStartDateTime = null;
+        this.studyEndDateTime = null;
+        this.studyContent = null;
+        this.studySubject = null;
+        this.studyLog = new ArrayList<>();
     }
 
     // getters
@@ -40,6 +43,10 @@ public class StudiedMaterial {
         return this.studySubject;
     }
 
+    public ArrayList<StudiedMaterial> getStudyLog() {
+        return this.studyLog;
+    }
+
     // setters
     public void setStudyTime(long studyTime) {
         this.studyTime = studyTime;
@@ -61,6 +68,12 @@ public class StudiedMaterial {
         this.studySubject = studySubject;
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a StudyTask to the StudyLog
+    public void addStudyTask(StudiedMaterial studiedMaterial) {
+        this.studyLog.add(studiedMaterial);
+    }
+
     // EFFECTS: converts the studyTime to int
     public String convertStudyTime() {
         int second = (int) this.getStudyTime() / 1000;
@@ -79,6 +92,7 @@ public class StudiedMaterial {
         }
     }
 
+    // EFFECTS: converts seconds into minutes
     public String setMinutes(int second, int minute) {
         int remainderSecond0 = second - 60 * minute;
         String remainderSecond0String;
@@ -90,6 +104,7 @@ public class StudiedMaterial {
         return minute + ":" + remainderSecond0String;
     }
 
+    // EFFECTS: converts seconds and minutes into hours
     public String setHours(int second, int minute, int hour) {
         int remainderMinute = minute - 60 * hour;
         int remainderSecond1 = second - 3600 * hour - 60 * remainderMinute;
@@ -108,6 +123,11 @@ public class StudiedMaterial {
         return hour + ":" + remainderMinuteString + ":" + remainderSecond1String;
     }
 
+    //    // MODIFIES: this
+//    // EFFECTS: deletes a StudyTask from the StudyLog
+//    public void deleteStudyTask(StudiedMaterial studiedMaterial) {
+//        this.studyList.remove(studiedMaterial);
+//    }
 //    // EFFECTS: modifies the StudyTask manually
 //    public void modifyStudyTask() {
 //
@@ -122,12 +142,4 @@ public class StudiedMaterial {
 //    public void pauseStudy() {
 //
 //    }
-
-
-
-
-
-
-
-
 }

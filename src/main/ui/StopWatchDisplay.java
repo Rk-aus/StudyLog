@@ -11,7 +11,7 @@
 //import java.util.List;
 //import java.util.Scanner;
 //
-//
+//import static com.googlecode.lanterna.input.KeyType.Enter;
 //
 //
 //public class StopWatchDisplay {
@@ -44,8 +44,21 @@
 ////        command = input.next();
 ////        command = command.toLowerCase();
 //
-////        Screen screen = new DefaultTerminalFactory().createScreen();
-////        KeyStroke stroke = screen.pollInput();
+//        Screen screen = new DefaultTerminalFactory().createScreen();
+//        KeyStroke stroke = screen.pollInput();
+//
+//        while (stroke == null) {
+//            stroke = screen.pollInput();
+//        }
+//
+//        switch (stroke.getKeyType()) {
+//            case Enter:
+//                System.out.println("Working");
+//                break;
+//            case Escape:
+//                screen.stopScreen();
+//                System.exit(0);
+//        }
 ////
 ////        if (stroke == null) {
 ////            sw.pauseStopWatch();
