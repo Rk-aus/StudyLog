@@ -35,8 +35,8 @@ habit of **lively studying** through this study log.
 ## ~ Task 3 ~ User stories:
 
 ### Completed Implementation:
-- As a user, I want to be able to add studied materials into my study log
-- As a user, I want to be able to view my study log as a timeline
+- As a user, I want to be able to add multiple studied materials into my study log
+- As a user, I want to be able to view all my studied materials in my study log as a timeline
 - As a user, I want to be able to add new subjects into my study subject list
 - As a user, I want to be able to save the study time, the exact time I started studying, the exact time I ended
 studying, the study subject and the specific study content into my study log as studied materials
