@@ -11,7 +11,7 @@ public class StudiedMaterial {
     private String studyContent;
     private ArrayList<StudiedMaterial> studyLog;
 
-
+//
     // EFFECTS: constructs a StudiedMaterial object with studyTime 0
     public StudiedMaterial() {
         this.studyTime = 0;
