@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 
+// This class represents the studied material (X) that is saved in the StudyLog (Y)
 public class StudiedMaterial {
     private long studyTime;
 

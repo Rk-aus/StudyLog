@@ -4,6 +4,7 @@ import exceptions.NoSuchNameException;
 
 import java.util.ArrayList;
 
+// This class represents the studying subject and list of subjects
 public class StudySubject {
 
     String subject;

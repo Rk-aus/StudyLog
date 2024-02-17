@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// This class represents a list (Y) of StudiedMaterial with each containing information about the material the user has
+// studied in the past (X)
 public class StudyLog {
 
     private List<StudiedMaterial> studyList;

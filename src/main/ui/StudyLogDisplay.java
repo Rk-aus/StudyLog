@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 // Inspired by TellerApp
-
+// This class displays the StudyLog application
 public class StudyLogDisplay {
 
     private StudyLog studyLog;
