@@ -11,15 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class StudiedMaterialTest {
 
     StudiedMaterial testStudiedMaterial;
-    StudiedMaterial testStudiedMaterial0;
-    StudiedMaterial testStudiedMaterial1;
     StudySubject testStudySubject;
 
     @BeforeEach
     void setup(){
         testStudiedMaterial = new StudiedMaterial();
-        testStudiedMaterial0 = new StudiedMaterial();
-        testStudiedMaterial1 = new StudiedMaterial();
         testStudySubject = new StudySubject();
     }
 
@@ -30,7 +26,6 @@ public class StudiedMaterialTest {
         assertNull(testStudiedMaterial.getStudyEndDateTime());
         assertNull(testStudiedMaterial.getStudyContent());
         assertNull(testStudiedMaterial.getStudySubject());
-        assertEquals(0, testStudiedMaterial.getStudyLog().size());
     }
 
     @Test
@@ -58,24 +53,6 @@ public class StudiedMaterialTest {
         testStudiedMaterial.setStudySubject(testStudySubject);
         assertEquals(testStudySubject, testStudiedMaterial.getStudySubject());
     }
-
-    @Test
-    void testAddStudiedMaterial() {
-        testStudiedMaterial.addStudyTask(testStudiedMaterial0);
-        assertEquals(1, testStudiedMaterial.getStudyLog().size());
-        testStudiedMaterial.addStudyTask(testStudiedMaterial1);
-        assertEquals(2, testStudiedMaterial.getStudyLog().size());
-    }
-
-//    @Test
-//    void testDeleteStudyTask() {
-//        testStudyLog.addStudyTask(testStudyTask0);
-//        testStudyLog.addStudyTask(testStudyTask1);
-//        testStudyLog.deleteStudyTask(testStudyTask0);
-//        assertEquals(1, testStudyLog.getStudyList().size());
-//        testStudyLog.deleteStudyTask(testStudyTask1);
-//        assertEquals(0, testStudyLog.getStudyList().size());
-//    }
 
     @Test
     void testConvertStudyTimeSeconds() {

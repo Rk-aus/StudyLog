@@ -54,6 +54,8 @@ public class StudySubjectTest {
     void testFindSubjectNotFound() {
         testStudySubject.addSubject(testStudySubject0);
         testStudySubject.addSubject(testStudySubject1);
+        testStudySubject0.setSubject("Physics");
+        testStudySubject1.setSubject("Math");
         try {
             testStudySubject.findSubject("test");
             fail("Expected not to run");

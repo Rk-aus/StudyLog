@@ -2,6 +2,7 @@ package ui;
 
 import exceptions.NoSuchNameException;
 import model.StudiedMaterial;
+import model.StudyLog;
 import model.StudySubject;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,8 @@ import java.util.Scanner;
 // Inspired by TellerApp
 
 public class StudyLogDisplay {
+
+    private StudyLog studyLog;
     private StudiedMaterial studyingMaterial;
     private StudySubject subject;
 
@@ -28,6 +31,7 @@ public class StudyLogDisplay {
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runDisplay() {
+        studyLog = new StudyLog();
         subject = new StudySubject();
 
         boolean running = true;
@@ -133,7 +137,7 @@ public class StudyLogDisplay {
         studyingMaterial.setStudyTime(System.currentTimeMillis() - startTime);
         studyingMaterial.setStudyEndDateTime(LocalDateTime.now());
         fillStudyContent();
-        this.studyingMaterial.addStudyTask(studyingMaterial);
+        this.studyLog.addStudyTask(studyingMaterial);
         printStudiedMaterial(studyingMaterial);
     }
 
@@ -168,7 +172,7 @@ public class StudyLogDisplay {
 
     // EFFECTS: prints the StudyLog
     private void viewStudyLog() {
-        List<StudiedMaterial> studyList = this.studyingMaterial.getStudyLog();
+        List<StudiedMaterial> studyList = this.studyLog.getStudyList();
         System.out.println("\nStudy Log: ");
         for (StudiedMaterial studiedMaterial: studyList) {
             printStudiedMaterial(studiedMaterial);
