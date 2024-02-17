@@ -2,9 +2,7 @@ package ui;
 
 import exceptions.NoSuchNameException;
 import model.StudiedMaterial;
-import model.StudyLog;
 import model.StudySubject;
-import model.StudySubjectList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,10 +12,8 @@ import java.util.Scanner;
 // Inspired by TellerApp
 
 public class StudyLogDisplay {
-
-    private StudyLog studyLog;
     private StudiedMaterial studyingMaterial;
-    private StudySubjectList subjectList;
+    private StudySubject subject;
 
     private Scanner input;
 
@@ -32,8 +28,7 @@ public class StudyLogDisplay {
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runDisplay() {
-        studyLog = new StudyLog();
-        subjectList = new StudySubjectList();
+        subject = new StudySubject();
 
         boolean running = true;
         String command;
@@ -92,7 +87,7 @@ public class StudyLogDisplay {
 
         StudySubject newSubject = new StudySubject();
         newSubject.setSubject(name);
-        this.subjectList.addSubject(newSubject);
+        this.subject.addSubject(newSubject);
 
         System.out.println("Successfully added " + newSubject.getSubject() + " to Subjects!\n");
     }
@@ -105,7 +100,7 @@ public class StudyLogDisplay {
         studyingMaterial = new StudiedMaterial();
         String name = input.next();
 
-        StudySubject subject = this.subjectList.findSubject(name);
+        StudySubject subject = this.subject.findSubject(name);
         studyingMaterial.setStudySubject(subject);
 
         System.out.println("Let's start studying!");
@@ -138,7 +133,7 @@ public class StudyLogDisplay {
         studyingMaterial.setStudyTime(System.currentTimeMillis() - startTime);
         studyingMaterial.setStudyEndDateTime(LocalDateTime.now());
         fillStudyContent();
-        this.studyLog.addStudyTask(studyingMaterial);
+        this.studyingMaterial.addStudyTask(studyingMaterial);
         printStudiedMaterial(studyingMaterial);
     }
 
@@ -156,24 +151,24 @@ public class StudyLogDisplay {
     // EFFECTS: prints the given StudiedMaterial
     private void printStudiedMaterial(StudiedMaterial studyingMaterial) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        System.out.println("Study Subject: " + studyingMaterial.getStudySubject().getSubject());
-        System.out.println("Study Content: " + studyingMaterial.getStudyContent());
-        System.out.println("Started from: " + formatter.format(studyingMaterial.getStudyStartDateTime()));
-        System.out.println("Ended at:" + formatter.format(studyingMaterial.getStudyEndDateTime()));
-        System.out.println("Total Study Time: " + studyingMaterial.convertStudyTime() + "\n");
+        System.out.println("\tStudy Subject: " + studyingMaterial.getStudySubject().getSubject());
+        System.out.println("\tStudy Content: " + studyingMaterial.getStudyContent());
+        System.out.println("\tStarted from: " + formatter.format(studyingMaterial.getStudyStartDateTime()));
+        System.out.println("\tEnded at:" + formatter.format(studyingMaterial.getStudyEndDateTime()));
+        System.out.println("\tTotal Study Time: " + studyingMaterial.convertStudyTime() + "\n");
     }
 
     // EFFECTS: prints the StudySubjectList
     private void viewSubjectList() {
         System.out.println("\nCurrent Subjects are:");
-        for (StudySubject s : this.subjectList.getSubjectList()) {
+        for (StudySubject s : this.subject.getSubjectList()) {
             System.out.println("\t" + s.getSubject());
         }
     }
 
     // EFFECTS: prints the StudyLog
     private void viewStudyLog() {
-        List<StudiedMaterial> studyList = this.studyLog.getStudyList();
+        List<StudiedMaterial> studyList = this.studyingMaterial.getStudyLog();
         System.out.println("\nStudy Log: ");
         for (StudiedMaterial studiedMaterial: studyList) {
             printStudiedMaterial(studiedMaterial);

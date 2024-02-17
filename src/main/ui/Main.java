@@ -2,35 +2,6 @@ package ui;
 
 public class Main {
     public static void main(String[] args) {
-        StudyLogDisplay studyLogDisplay = new StudyLogDisplay();
-
-
-
-
-//        long time;
-//        time = System.currentTimeMillis();
-//        for (int i = 0; i < 1000000; i++) {
-//            System.out.println(i);
-//        }
-//        long timeInterval = System.currentTimeMillis() - time;
-//        System.out.println(timeInterval);
-//        StopWatch sw = new StopWatch();
-//        sw.startStopWatch();
-//        sw.getIntervalStudyTime();
-//        sw.pauseStopWatch();
-//        System.out.println(sw.getTotalStudyTime());
-//        sw.startStopWatch();
-//        sw.pauseStopWatch();
-//        System.out.println(sw.getTotalStudyTime());
-//        sw.startStopWatch();
-//        sw.pauseStopWatch();
-//        System.out.println(sw.getTotalStudyTime());
-//        sw.startStopWatch();
-//        sw.pauseStopWatch();
-//        System.out.println(sw.getTotalStudyTime());
-//        long time = System.currentTimeMillis();
-//        for (int i = 0; i < 1000000; i++) {
-//            System.out.println((System.currentTimeMillis() - time) / 1000);
-//        }
+        new StudyLogDisplay();
     }
 }

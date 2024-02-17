@@ -33,10 +33,16 @@ I wish I can change as many student as possible so that they start the
 habit of **lively studying** through this study log.
 
 ## ~ Task 3 ~ User stories:
-- As a user, I want to be able to save the study time, the exact time I started studying, the exact time I ended
-studying, the study subject and the specific study content into my study log
-- As a user, I want to be able to edit the study log
+
+### Completed Implementation:
+- As a user, I want to be able to add studied materials into my study log
 - As a user, I want to be able to view my study log as a timeline
+- As a user, I want to be able to add new subjects into my study subject list
+- As a user, I want to be able to save the study time, the exact time I started studying, the exact time I ended
+studying, the study subject and the specific study content into my study log as studied materials
+
+### Implementation Ideas:
+- As a user, I want to be able to edit or delete the studied material in the study log
 - As a user, I want to be able to have a stop watch feature while I study
 - As a user, I want to be able to see how much I studied today, this week, this month and in total
 - As a user, I want to be able to see the average study time per day for today, this week, this month and in total
