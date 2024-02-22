@@ -42,6 +42,9 @@ habit of **lively studying** through this study log.
 studying, the study subject and the specific study content into my study log as studied materials
 
 ### Implementation Ideas:
+- As a user, I want to be able to have the option to save my study log to file
+- As a user, I want to be able to have the option to reload my study log from file
+
 - As a user, I want to be able to edit or delete the studied material in the study log
 - As a user, I want to be able to have a stop watch feature while I study
 - As a user, I want to be able to see how much I studied today, this week, this month and in total
