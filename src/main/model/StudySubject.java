@@ -1,11 +1,15 @@
 package model;
 
 import exceptions.NoSuchNameException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.ArrayList;
 
-// This class represents the studying subject and list of subjects
-public class StudySubject {
+// inspired by JsonSerializationDemo
+// Represents the studying subject and list of subjects
+public class StudySubject implements Writable {
 
     String subject;
     ArrayList<StudySubject> subjectList;
@@ -44,6 +48,26 @@ public class StudySubject {
             }
         }
         throw new NoSuchNameException();
+    }
+
+    // inspired by JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("subjectList", subjectListToJson());
+        return json;
+    }
+
+    // inspired by JsonSerializationDemo
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray subjectListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (StudySubject ss : this.subjectList) {
+            jsonArray.put(ss.toJson());
+        }
+
+        return jsonArray;
     }
 
 //    // REQUIRES: the given subject is in the list

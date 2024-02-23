@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDateTime;
 
+// inspired by JsonSerializationDemo
 // This class represents the studied material (X) that is saved in the StudyLog (Y)
-public class StudiedMaterial {
+public class StudiedMaterial implements Writable {
     private long studyTime;
 
     private LocalDateTime studyStartDateTime;
@@ -107,6 +111,18 @@ public class StudiedMaterial {
             remainderSecond1String = String.valueOf(remainderSecond1);
         }
         return hour + ":" + remainderMinuteString + ":" + remainderSecond1String;
+    }
+
+    // inspired by JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("studyTime", this.studyTime);
+        json.put("studyStartDateTime", this.studyStartDateTime);
+        json.put("studyEndDateTime", this.studyEndDateTime);
+        json.put("studySubject", this.studySubject.getSubject());
+        json.put("studyContent", this.studyContent);
+        return json;
     }
 
 //    // EFFECTS: modifies the StudyTask manually

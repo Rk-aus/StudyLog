@@ -4,21 +4,28 @@ import exceptions.NoSuchNameException;
 import model.StudiedMaterial;
 import model.StudyLog;
 import model.StudySubject;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
-// Inspired by TellerApp
+// Inspired by TellerApp & JsonSerializationDemo
 // This class displays the StudyLog application
 public class StudyLogDisplay {
 
+    private static final String JSON_STORE = "./data/workroom.json";
     private StudyLog studyLog;
     private StudiedMaterial studyingMaterial;
     private StudySubject subject;
 
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     // Inspired by TellerApp
@@ -51,7 +58,7 @@ public class StudyLogDisplay {
         }
     }
 
-    // Inspired by TellerApp
+    // Inspired by TellerApp & JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -67,19 +74,26 @@ public class StudyLogDisplay {
             viewSubjectList();
         } else if (command.equals("log")) {
             viewStudyLog();
+        } else if (command.equals("save")) {
+            saveStudyLog();
+        } else if (command.equals("load")) {
+            loadStudyLog();
         } else {
             System.out.println("Selection not valid...");
         }
     }
 
-    // Inspired by TellerApp
+    // Inspired by TellerApp & JsonSerializationDemo
     // EFFECTS: displays menu of actions to user
     private void displayAction() {
         System.out.println("\nSelect from:");
         System.out.println("\tadd -> Add Subject");
         System.out.println("\tstart -> Start Study");
         System.out.println("\tsubjects -> View Subject List");
-        System.out.println("\tlog -> View Study Log\n");
+        System.out.println("\tlog -> View Study Log");
+        System.out.println("\tsave -> Save Study Log to File");
+        System.out.println("\tload -> Load Study Log from File");
+        System.out.println("\tleave -> Quit Study Log\n");
     }
 
     // Inspired by TellerApp
@@ -176,6 +190,30 @@ public class StudyLogDisplay {
         System.out.println("\nStudy Log: ");
         for (StudiedMaterial studiedMaterial: studyList) {
             printStudiedMaterial(studiedMaterial);
+        }
+    }
+
+    // Inspired by JsonSerializationDemo
+    // EFFECTS: prints the StudyLog
+    private void saveStudyLog() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(studyLog);
+            jsonWriter.close();
+            System.out.println("Saved StudyLog to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // Inspired by JsonSerializationDemo
+    // EFFECTS: prints the StudyLog
+    private void loadStudyLog() {
+        try {
+            this.studyLog = jsonReader.read();
+            System.out.println("Loaded StudyLog from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
