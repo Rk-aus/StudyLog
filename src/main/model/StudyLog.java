@@ -11,7 +11,6 @@ import java.util.List;
 // Represents a list (Y) of StudiedMaterial with each containing information about the material the user has
 // studied in the past (X)
 public class StudyLog implements Writable {
-
     private List<StudiedMaterial> studyList;
 
     // EFFECTS: constructs a StudyLog object

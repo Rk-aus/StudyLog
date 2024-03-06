@@ -31,6 +31,9 @@ public class StudyLogDisplay {
     // Inspired by TellerApp
     // EFFECTS: runs the StudyLogDisplay
     public StudyLogDisplay() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         runDisplay();
     }
 

@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -30,7 +31,7 @@ public class JsonReader {
     public StudyLog read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseWorkRoom(jsonObject);
+        return parseStudyLog(jsonObject);
     }
 
     // inspired by JsonSerializationDemo
@@ -47,7 +48,7 @@ public class JsonReader {
 
     // inspired by JsonSerializationDemo
     // EFFECTS: parses workroom from JSON object and returns it
-    private StudyLog parseWorkRoom(JSONObject jsonObject) {
+    private StudyLog parseStudyLog(JSONObject jsonObject) {
         StudyLog sl = new StudyLog();
         addStudyLog(sl, jsonObject);
         return sl;
@@ -68,16 +69,19 @@ public class JsonReader {
     // MODIFIES: wr
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addStudiedMaterial(StudyLog sl, JSONObject jsonObject) {
-        long studyTime = Long.valueOf(jsonObject.getString("studyTime"));
-//        LocalDateTime studyStartDateTime = LocalDateTime.(jsonObject.getString("studyStartDateTime"));
-//        LocalDateTime studyEndDateTime = LocalDateTime.(jsonObject.getString("studyEndDateTime"));
+        long studyTime = jsonObject.getLong("studyTime");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+        String studyStartDateTimeString = String.valueOf(jsonObject.getString("studyStartDateTime"));
+        LocalDateTime studyStartDateTime = LocalDateTime.parse(studyStartDateTimeString, formatter);
+        String studyEndDateTimeString = String.valueOf(jsonObject.getString("studyEndDateTime"));
+        LocalDateTime studyEndDateTime = LocalDateTime.parse(studyEndDateTimeString, formatter);
         StudySubject studySubject = new StudySubject();
         studySubject.setSubject(jsonObject.getString("studySubject"));
         String studyContent = String.valueOf(jsonObject.getString("studyContent"));
         StudiedMaterial studiedMaterial = new StudiedMaterial();
         studiedMaterial.setStudyTime(studyTime);
-//        studiedMaterial.setStudyStartDateTime(studyStartDateTime);
-//        studiedMaterial.setStudyEndDateTime(studyEndDateTime);
+        studiedMaterial.setStudyStartDateTime(studyStartDateTime);
+        studiedMaterial.setStudyEndDateTime(studyEndDateTime);
         studiedMaterial.setStudySubject(studySubject);
         studiedMaterial.setStudyContent(studyContent);
         sl.addStudyTask(studiedMaterial);

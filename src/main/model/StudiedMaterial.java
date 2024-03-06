@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 // This class represents the studied material (X) that is saved in the StudyLog (Y)
 public class StudiedMaterial implements Writable {
     private long studyTime;
-
     private LocalDateTime studyStartDateTime;
     private LocalDateTime studyEndDateTime;
     private StudySubject studySubject;
@@ -84,6 +83,7 @@ public class StudiedMaterial implements Writable {
         }
     }
 
+    // EFFECTS: converts second into minutes and seconds
     public String setMinutes(int second, int minute) {
         int remainderSecond0 = second - 60 * minute;
         String remainderSecond0String;
@@ -95,6 +95,7 @@ public class StudiedMaterial implements Writable {
         return minute + ":" + remainderSecond0String;
     }
 
+    // EFFECTS: converts second into hours, minutes, and seconds
     public String setHours(int second, int minute, int hour) {
         int remainderMinute = minute - 60 * hour;
         int remainderSecond1 = second - 3600 * hour - 60 * remainderMinute;
