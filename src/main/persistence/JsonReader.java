@@ -51,6 +51,7 @@ public class JsonReader {
     private StudyLog parseStudyLog(JSONObject jsonObject) {
         StudyLog sl = new StudyLog();
         addStudyLog(sl, jsonObject);
+        addStudySubject(sl, jsonObject);
         return sl;
     }
 
@@ -60,8 +61,8 @@ public class JsonReader {
     private void addStudyLog(StudyLog sl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("studyList");
         for (Object json : jsonArray) {
-            JSONObject nextThingy = (JSONObject) json;
-            addStudiedMaterial(sl, nextThingy);
+            JSONObject nextStudiedMaterial = (JSONObject) json;
+            addStudiedMaterial(sl, nextStudiedMaterial);
         }
     }
 
@@ -75,15 +76,26 @@ public class JsonReader {
         LocalDateTime studyStartDateTime = LocalDateTime.parse(studyStartDateTimeString, formatter);
         String studyEndDateTimeString = String.valueOf(jsonObject.getString("studyEndDateTime"));
         LocalDateTime studyEndDateTime = LocalDateTime.parse(studyEndDateTimeString, formatter);
-        StudySubject studySubject = new StudySubject();
-        studySubject.setSubject(jsonObject.getString("studySubject"));
+        StudySubject ss = new StudySubject();
+        String subject = jsonObject.getJSONObject("studySubject").getString("subject");
+        ss.setSubject(subject);
         String studyContent = String.valueOf(jsonObject.getString("studyContent"));
         StudiedMaterial studiedMaterial = new StudiedMaterial();
         studiedMaterial.setStudyTime(studyTime);
         studiedMaterial.setStudyStartDateTime(studyStartDateTime);
         studiedMaterial.setStudyEndDateTime(studyEndDateTime);
-        studiedMaterial.setStudySubject(studySubject);
+        studiedMaterial.setStudySubject(ss);
         studiedMaterial.setStudyContent(studyContent);
         sl.addStudyTask(studiedMaterial);
+    }
+
+    private void addStudySubject(StudyLog sl, JSONObject jsonObject) {
+        JSONArray subjectList = jsonObject.getJSONArray("subjectList");
+        for (Object json : subjectList) {
+            String nextStudiedMaterial = (String) json;
+            StudySubject ss = new StudySubject();
+            ss.setSubject(nextStudiedMaterial);
+            sl.addStudySubjectList(ss);
+        }
     }
 }

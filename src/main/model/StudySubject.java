@@ -39,6 +39,12 @@ public class StudySubject implements Writable {
         this.subjectList.add(subject);
     }
 
+    public void addSubjectToAll(StudySubject subject0) {
+        for (StudySubject subject: this.subjectList) {
+            subject.subjectList.add(subject0);
+        }
+    }
+
     // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject
     //          if the StudySubject is not found, throw a NoSuchNameException
     public StudySubject findSubject(String name) throws NoSuchNameException {
@@ -54,6 +60,7 @@ public class StudySubject implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
+        json.put("subject", this.subject);
         json.put("subjectList", subjectListToJson());
         return json;
     }
@@ -64,7 +71,7 @@ public class StudySubject implements Writable {
         JSONArray jsonArray = new JSONArray();
 
         for (StudySubject ss : this.subjectList) {
-            jsonArray.put(ss.toJson());
+            jsonArray.put(ss.getSubject());
         }
 
         return jsonArray;

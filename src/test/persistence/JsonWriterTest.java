@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// inspired by JsonSerializationDemo
 class JsonWriterTest extends JsonTest {
     //NOTE TO CPSC 210 STUDENTS: the strategy in designing tests for the JsonWriter is to
     //write data to a file and then use the reader to read it back in and check that we
@@ -31,6 +31,7 @@ class JsonWriterTest extends JsonTest {
     void testWriterEmptyStudyLog() {
         try {
             StudyLog sl = new StudyLog();
+            StudySubject ss = new StudySubject();
             JsonWriter writer = new JsonWriter("./data/testReaderEmptyStudyLog.json");
             writer.open();
             writer.write(sl);
@@ -39,6 +40,7 @@ class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("./data/testReaderEmptyStudyLog.json");
             sl = reader.read();
             assertEquals(0, sl.getStudyList().size());
+            assertEquals(0, ss.getSubjectList().size());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

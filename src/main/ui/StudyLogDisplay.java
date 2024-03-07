@@ -17,8 +17,7 @@ import java.util.Scanner;
 // Inspired by TellerApp & JsonSerializationDemo
 // This class displays the StudyLog application
 public class StudyLogDisplay {
-
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/studylog.json";
     private StudyLog studyLog;
     private StudiedMaterial studyingMaterial;
     private StudySubject subject;
@@ -28,7 +27,7 @@ public class StudyLogDisplay {
     private JsonReader jsonReader;
 
 
-    // Inspired by TellerApp
+    // inspired by TellerApp
     // EFFECTS: runs the StudyLogDisplay
     public StudyLogDisplay() {
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -37,7 +36,7 @@ public class StudyLogDisplay {
         runDisplay();
     }
 
-    // Inspired by TellerApp
+    // inspired by TellerApp
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runDisplay() {
@@ -61,7 +60,7 @@ public class StudyLogDisplay {
         }
     }
 
-    // Inspired by TellerApp & JsonSerializationDemo
+    // inspired by TellerApp & JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
@@ -86,7 +85,7 @@ public class StudyLogDisplay {
         }
     }
 
-    // Inspired by TellerApp & JsonSerializationDemo
+    // inspired by TellerApp & JsonSerializationDemo
     // EFFECTS: displays menu of actions to user
     private void displayAction() {
         System.out.println("\nSelect from:");
@@ -99,7 +98,7 @@ public class StudyLogDisplay {
         System.out.println("\tleave -> Quit Study Log\n");
     }
 
-    // Inspired by TellerApp
+    // inspired by TellerApp
     // MODIFIES: this
     // EFFECTS: adds StudySubject to StudySubjectList
     private void addSubject() {
@@ -109,11 +108,14 @@ public class StudyLogDisplay {
         StudySubject newSubject = new StudySubject();
         newSubject.setSubject(name);
         this.subject.addSubject(newSubject);
+        this.subject.addSubjectToAll(newSubject);
+        this.studyingMaterial = new StudiedMaterial();
+        this.studyLog.addStudySubjectList(newSubject);
 
         System.out.println("Successfully added " + newSubject.getSubject() + " to Subjects!\n");
     }
 
-    // Inspired by TellerApp
+    // inspired by TellerApp
     // MODIFIES: this
     // EFFECTS: starts the study and saves it to StudyLog
     private void startStudy() throws NoSuchNameException {
@@ -182,7 +184,7 @@ public class StudyLogDisplay {
     // EFFECTS: prints the StudySubjectList
     private void viewSubjectList() {
         System.out.println("\nCurrent Subjects are:");
-        for (StudySubject s : this.subject.getSubjectList()) {
+        for (StudySubject s : this.studyLog.getStudySubjectList()) {
             System.out.println("\t" + s.getSubject());
         }
     }

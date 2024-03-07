@@ -12,15 +12,22 @@ import java.util.List;
 // studied in the past (X)
 public class StudyLog implements Writable {
     private List<StudiedMaterial> studyList;
+    private List<StudySubject> subjectList;
+
 
     // EFFECTS: constructs a StudyLog object
     public StudyLog() {
         this.studyList = new ArrayList<>();
+        subjectList = new ArrayList<>();
     }
 
     // getters
     public List<StudiedMaterial> getStudyList() {
         return this.studyList;
+    }
+
+    public List<StudySubject> getStudySubjectList() {
+        return this.subjectList;
     }
 
     // MODIFIES: this
@@ -29,11 +36,18 @@ public class StudyLog implements Writable {
         this.studyList.add(studiedMaterial);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the given StudySubject to the list
+    public void addStudySubjectList(StudySubject studySubject) {
+        this.subjectList.add(studySubject);
+    }
+
     // inspired by JsonSerializationDemo
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("studyList", studyListToJson());
+        json.put("subjectList", subjectListToJson());
         return json;
     }
 
@@ -44,6 +58,18 @@ public class StudyLog implements Writable {
 
         for (StudiedMaterial sm : this.studyList) {
             jsonArray.put(sm.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // inspired by JsonSerializationDemo
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray subjectListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (StudySubject ss : this.subjectList) {
+            jsonArray.put(ss.getSubject());
         }
 
         return jsonArray;

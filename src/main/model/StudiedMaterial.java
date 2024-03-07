@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 // inspired by JsonSerializationDemo
 // This class represents the studied material (X) that is saved in the StudyLog (Y)
@@ -121,7 +122,7 @@ public class StudiedMaterial implements Writable {
         json.put("studyTime", this.studyTime);
         json.put("studyStartDateTime", this.studyStartDateTime);
         json.put("studyEndDateTime", this.studyEndDateTime);
-        json.put("studySubject", this.studySubject.getSubject());
+        json.put("studySubject", this.studySubject.toJson());
         json.put("studyContent", this.studyContent);
         return json;
     }

@@ -1,6 +1,7 @@
 package persistence;
 
 import model.StudyLog;
+import model.StudySubject;
 import org.json.JSONObject;
 
 
@@ -32,6 +33,11 @@ public class JsonWriter {
     // EFFECTS: writes JSON representation of workroom to file
     public void write(StudyLog sl) {
         JSONObject json = sl.toJson();
+        saveToFile(json.toString(TAB));
+    }
+
+    public void write(StudySubject ss) {
+        JSONObject json = ss.toJson();
         saveToFile(json.toString(TAB));
     }
 
