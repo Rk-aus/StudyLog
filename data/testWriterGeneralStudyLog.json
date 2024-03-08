@@ -1,0 +1,16 @@
+{"studyList": [
+    {
+        "studyTime": 10,
+        "studyEndDateTime": "2024-03-05T20:46:01.985623",
+        "studyStartDateTime": "2024-03-05T20:46:01.985623",
+        "studySubject": "MATH",
+        "studyContent": "CLP"
+    },
+    {
+        "studyTime": 100,
+        "studyEndDateTime": "2024-03-05T20:46:01.985623",
+        "studyStartDateTime": "2024-03-05T20:46:01.985623",
+        "studySubject": "CPSC",
+        "studyContent": "Project"
+    }
+]}

@@ -108,7 +108,6 @@ public class StudyLogDisplay {
         StudySubject newSubject = new StudySubject();
         newSubject.setSubject(name);
         this.subject.addSubject(newSubject);
-        this.subject.addSubjectToAll(newSubject);
         this.studyingMaterial = new StudiedMaterial();
         this.studyLog.addStudySubjectList(newSubject);
 

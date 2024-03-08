@@ -39,12 +39,6 @@ public class StudySubject implements Writable {
         this.subjectList.add(subject);
     }
 
-    public void addSubjectToAll(StudySubject subject0) {
-        for (StudySubject subject: this.subjectList) {
-            subject.subjectList.add(subject0);
-        }
-    }
-
     // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject
     //          if the StudySubject is not found, throw a NoSuchNameException
     public StudySubject findSubject(String name) throws NoSuchNameException {

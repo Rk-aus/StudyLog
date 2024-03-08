@@ -69,6 +69,8 @@ class JsonWriterTest extends JsonTest {
             sm1.setStudyEndDateTime(now);
             sl.addStudyTask(sm0);
             sl.addStudyTask(sm1);
+            sl.addStudySubjectList(ss0);
+            sl.addStudySubjectList(ss1);
             JsonWriter writer = new JsonWriter("./data/testReaderGeneralStudyLog.json");
             writer.open();
             writer.write(sl);
