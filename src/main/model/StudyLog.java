@@ -43,6 +43,7 @@ public class StudyLog implements Writable {
     }
 
     // inspired by JsonSerializationDemo
+    // EFFECTS: returns this as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -52,7 +53,7 @@ public class StudyLog implements Writable {
     }
 
     // inspired by JsonSerializationDemo
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns StudiedMaterial in this StudyLog as a JSON array
     private JSONArray studyListToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -64,7 +65,7 @@ public class StudyLog implements Writable {
     }
 
     // inspired by JsonSerializationDemo
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns StudySubjectList in this StudyLog as a JSON array
     private JSONArray subjectListToJson() {
         JSONArray jsonArray = new JSONArray();
 

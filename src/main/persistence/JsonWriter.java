@@ -1,14 +1,12 @@
 package persistence;
 
 import model.StudyLog;
-import model.StudySubject;
 import org.json.JSONObject;
-
 
 import java.io.*;
 
 // inspired by JsonSerializationDemo
-// Represents a writer that writes JSON representation of workroom to file
+// Represents a writer that writes JSON representation of StudyLog to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -30,7 +28,7 @@ public class JsonWriter {
 
     // inspired by JsonSerializationDemo
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of StudyLog to file
     public void write(StudyLog sl) {
         JSONObject json = sl.toJson();
         saveToFile(json.toString(TAB));

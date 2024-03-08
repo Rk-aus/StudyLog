@@ -10,12 +10,16 @@ class StudyLogTest {
     private StudyLog testStudyLog;
     private StudiedMaterial testStudyTask0;
     private StudiedMaterial testStudyTask1;
+    private StudySubject testStudySubject0;
+    private StudySubject testStudySubject1;
 
     @BeforeEach
     void setup() {
         testStudyLog = new StudyLog();
         testStudyTask0 = new StudiedMaterial();
         testStudyTask1 = new StudiedMaterial();
+        testStudySubject0 = new StudySubject();
+        testStudySubject1 = new StudySubject();
     }
 
     @Test
@@ -29,6 +33,14 @@ class StudyLogTest {
         assertEquals(1, testStudyLog.getStudyList().size());
         testStudyLog.addStudyTask(testStudyTask1);
         assertEquals(2, testStudyLog.getStudyList().size());
+    }
+
+    @Test
+    void testAddStudySubject() {
+        testStudyLog.addStudySubjectList(testStudySubject0);
+        assertEquals(1, testStudyLog.getStudySubjectList().size());
+        testStudyLog.addStudySubjectList(testStudySubject1);
+        assertEquals(2, testStudyLog.getStudySubjectList().size());
     }
 
 //    @Test

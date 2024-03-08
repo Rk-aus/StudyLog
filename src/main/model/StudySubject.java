@@ -1,7 +1,6 @@
 package model;
 
 import exceptions.NoSuchNameException;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -51,6 +50,7 @@ public class StudySubject implements Writable {
     }
 
     // inspired by JsonSerializationDemo
+    // EFFECTS: returns this as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

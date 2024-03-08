@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 // inspired by JsonSerializationDemo
 // This class represents the studied material (X) that is saved in the StudyLog (Y)
@@ -116,6 +115,7 @@ public class StudiedMaterial implements Writable {
     }
 
     // inspired by JsonSerializationDemo
+    // EFFECTS: returns this as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

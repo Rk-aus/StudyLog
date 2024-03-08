@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 import org.json.*;
 
 // inspired by JsonSerializationDemo
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads StudyLog from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -26,7 +26,7 @@ public class JsonReader {
     }
 
     // inspired by JsonSerializationDemo
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads StudyLog from file and returns it;
     // throws IOException if an error occurs reading data from file
     public StudyLog read() throws IOException {
         String jsonData = readFile(source);
@@ -47,7 +47,7 @@ public class JsonReader {
     }
 
     // inspired by JsonSerializationDemo
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses StudyLog from JSON object and returns it
     private StudyLog parseStudyLog(JSONObject jsonObject) {
         StudyLog sl = new StudyLog();
         addStudyLog(sl, jsonObject);
@@ -56,8 +56,8 @@ public class JsonReader {
     }
 
     // inspired by JsonSerializationDemo
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: sl
+    // EFFECTS: parses StudiedMaterial and StudySubjectList from JSON object and adds them to StudyLog
     private void addStudyLog(StudyLog sl, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("studyList");
         for (Object json : jsonArray) {
@@ -67,8 +67,8 @@ public class JsonReader {
     }
 
     // inspired by JsonSerializationDemo
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: sl
+    // EFFECTS: parses StudiedMaterial and StudySubjectList from JSON object and adds it to StudyLog
     private void addStudiedMaterial(StudyLog sl, JSONObject jsonObject) {
         long studyTime = jsonObject.getLong("studyTime");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
@@ -89,6 +89,9 @@ public class JsonReader {
         sl.addStudyTask(studiedMaterial);
     }
 
+    // inspired by JsonSerializationDemo
+    // MODIFIES: sl
+    // EFFECTS: parses StudySubjectList from JSON object and adds it to StudyLog
     private void addStudySubject(StudyLog sl, JSONObject jsonObject) {
         JSONArray subjectList = jsonObject.getJSONArray("subjectList");
         for (Object json : subjectList) {
