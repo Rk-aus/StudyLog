@@ -36,11 +36,6 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
-    public void write(StudySubject ss) {
-        JSONObject json = ss.toJson();
-        saveToFile(json.toString(TAB));
-    }
-
     // inspired by JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: closes writer

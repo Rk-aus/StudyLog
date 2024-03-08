@@ -55,20 +55,7 @@ public class StudySubject implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("subject", this.subject);
-        json.put("subjectList", subjectListToJson());
         return json;
-    }
-
-    // inspired by JsonSerializationDemo
-    // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray subjectListToJson() {
-        JSONArray jsonArray = new JSONArray();
-
-        for (StudySubject ss : this.subjectList) {
-            jsonArray.put(ss.getSubject());
-        }
-
-        return jsonArray;
     }
 
 //    // REQUIRES: the given subject is in the list
