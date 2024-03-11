@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.NoSuchNameException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -40,6 +41,17 @@ public class StudyLog implements Writable {
     // EFFECTS: adds the given StudySubject to the list
     public void addStudySubjectList(StudySubject studySubject) {
         this.subjectList.add(studySubject);
+    }
+
+    // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject
+    //          if the StudySubject is not found, throw a NoSuchNameException
+    public StudySubject findSubject(String name) throws NoSuchNameException {
+        for (StudySubject subject: this.subjectList) {
+            if (subject.getSubject().equals(name)) {
+                return subject;
+            }
+        }
+        throw new NoSuchNameException();
     }
 
     // inspired by JsonSerializationDemo

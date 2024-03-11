@@ -1,9 +1,11 @@
 package model;
 
+import exceptions.NoSuchNameException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class StudyLogTest {
 
@@ -40,6 +42,47 @@ class StudyLogTest {
         testStudyLog.addStudySubjectList(testStudySubject0);
         assertEquals(1, testStudyLog.getStudySubjectList().size());
         testStudyLog.addStudySubjectList(testStudySubject1);
+        assertEquals(2, testStudyLog.getStudySubjectList().size());
+    }
+
+    @Test
+    void testFindSubjectEmptyList() {
+        try {
+            testStudyLog.findSubject("test");
+            fail("Expected not to run");
+        } catch (NoSuchNameException e) {
+            // expected
+        }
+    }
+
+    @Test
+    void testFindSubjectNotFound() {
+        testStudyLog.addStudySubjectList(testStudySubject0);
+        testStudyLog.addStudySubjectList(testStudySubject1);
+        testStudySubject0.setSubject("Physics");
+        testStudySubject1.setSubject("Math");
+        try {
+            testStudyLog.findSubject("test");
+            fail("Expected not to run");
+        } catch (NoSuchNameException e) {
+            // expected
+        }
+        assertEquals(2, testStudyLog.getStudySubjectList().size());
+    }
+
+    @Test
+    void testFindSubjectFound() {
+        testStudyLog.addStudySubjectList(testStudySubject0);
+        testStudyLog.addStudySubjectList(testStudySubject1);
+        testStudySubject0.setSubject("Physics");
+        testStudySubject1.setSubject("Math");
+        try {
+            StudySubject subject = testStudyLog.findSubject("Math");
+            assertEquals(testStudySubject1, subject);
+            // expected
+        } catch (NoSuchNameException e) {
+            fail("Expected not to run");
+        }
         assertEquals(2, testStudyLog.getStudySubjectList().size());
     }
 

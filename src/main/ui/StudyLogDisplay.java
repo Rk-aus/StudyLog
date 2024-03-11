@@ -122,7 +122,7 @@ public class StudyLogDisplay {
         studyingMaterial = new StudiedMaterial();
         String name = input.next();
 
-        StudySubject subject = this.subject.findSubject(name);
+        StudySubject subject = this.studyLog.findSubject(name);
         studyingMaterial.setStudySubject(subject);
 
         System.out.println("Let's start studying!");

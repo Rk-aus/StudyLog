@@ -39,45 +39,4 @@ public class StudySubjectTest {
         assertEquals(testStudySubject0, testStudySubject.getSubjectList().get(0));
         assertEquals(testStudySubject1, testStudySubject.getSubjectList().get(1));
     }
-
-    @Test
-    void testFindSubjectEmptyList() {
-        try {
-            testStudySubject.findSubject("test");
-            fail("Expected not to run");
-        } catch (NoSuchNameException e) {
-            // expected
-        }
-    }
-
-    @Test
-    void testFindSubjectNotFound() {
-        testStudySubject.addSubject(testStudySubject0);
-        testStudySubject.addSubject(testStudySubject1);
-        testStudySubject0.setSubject("Physics");
-        testStudySubject1.setSubject("Math");
-        try {
-            testStudySubject.findSubject("test");
-            fail("Expected not to run");
-        } catch (NoSuchNameException e) {
-            // expected
-        }
-        assertEquals(2, testStudySubject.getSubjectList().size());
-    }
-
-    @Test
-    void testFindSubjectFound() {
-        testStudySubject.addSubject(testStudySubject0);
-        testStudySubject.addSubject(testStudySubject1);
-        testStudySubject0.setSubject("Physics");
-        testStudySubject1.setSubject("Math");
-        try {
-            StudySubject subject = testStudySubject.findSubject("Math");
-            assertEquals(testStudySubject1, subject);
-            // expected
-        } catch (NoSuchNameException e) {
-            fail("Expected not to run");
-        }
-        assertEquals(2, testStudySubject.getSubjectList().size());
-    }
 }

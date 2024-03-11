@@ -3,14 +3,20 @@
         "MATH",
         "MIRA"
     ],
-    "studyList": [{
-        "studyTime": 2272,
-        "studyEndDateTime": "2024-03-07T10:55:41.904618",
-        "studyStartDateTime": "2024-03-07T10:55:39.656586",
-        "studySubject": {
-            "subjectList": ["MIRA"],
-            "subject": "MIRA"
+    "studyList": [
+        {
+            "studyTime": 2272,
+            "studyEndDateTime": "2024-03-07T10:55:41.904618",
+            "studyStartDateTime": "2024-03-07T10:55:39.656586",
+            "studySubject": {"subject": "MIRA"},
+            "studyContent": "AISH"
         },
-        "studyContent": "AISH"
-    }]
+        {
+            "studyTime": 3645,
+            "studyEndDateTime": "2024-03-11T06:25:25.678981",
+            "studyStartDateTime": "2024-03-11T06:25:22.052846",
+            "studySubject": {"subject": "MIRA"},
+            "studyContent": "IRa"
+        }
+    ]
 }
