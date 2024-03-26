@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // Inspired by SmartHome
 public class StudyLogGUI extends JFrame implements ActionListener {
@@ -24,6 +26,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
     private JButton b4;
     private JButton b5;
     private JButton b6;
+    private JButton b7;
     private JTextArea textField;
     private JTextArea label;
     private JPanel redPanel;
@@ -50,22 +53,17 @@ public class StudyLogGUI extends JFrame implements ActionListener {
 
         studyLog = new StudyLog();
 
-
         nextPanel = new JPanel();
         redPanel = new JPanel();
         redPanel.setBounds(0,HEIGHT / 3 + 30, WIDTH, HEIGHT - (HEIGHT / 3 + 30));
         nextPanel.setBounds(0,HEIGHT / 3, WIDTH, 30);
-//        redPanel.setBackground(Color.BLACK);
-        nextPanel.setBackground(Color.BLUE);
+        nextPanel.setBackground(Color.GRAY);
         nextPanel.setVisible(true);
         redPanel.setVisible(true);
         this.add(redPanel);
         this.add(nextPanel);
-//        label = new JLabel();
         label = new JTextArea();
         label.setVisible(true);
-//        textField1.setVisible(true);
-//        label.add(textField1);
         label.setPreferredSize(new Dimension(WIDTH, 500));
 
         redPanel.add(label);
@@ -74,6 +72,12 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         textField = new JTextArea();
         nextPanel.add(textField);
         textField.setPreferredSize(new Dimension(100, 20));
+
+
+        ImageIcon icon = new ImageIcon("data/GoodJob.jpeg");
+        JLabel label0 = new JLabel();
+        label0.setIcon(icon);
+        redPanel.add(label0);
 
         setVisible(true);
     }
@@ -85,8 +89,9 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         b2 = new JButton("Start/End Studying");
         b3 = new JButton("View Subject List");
         b4 = new JButton("View Study Log");
-        b5 = new JButton("Save Progress");
-        b6 = new JButton("Load Progress");
+        b5 = new JButton("Filter Study Log");
+        b6 = new JButton("Save");
+        b7 = new JButton("Load");
 
         JPanel buttonRow = formatButtonRow(b1);
         buttonRow.add(b2);
@@ -94,52 +99,21 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         buttonRow.add(b4);
         buttonRow.add(b5);
         buttonRow.add(b6);
+        buttonRow.add(b7);
         buttonRow.setSize(WIDTH, HEIGHT / 6);
 
-//        methodOne();
-
-//        b2.addActionListener(e -> {
-//            // do the method 2
-//        });
-
-//        methodThree();
         b1.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
         b5.addActionListener(this);
         b6.addActionListener(this);
+        b7.addActionListener(this);
 
         buttonRow.setBounds(0,0, WIDTH, HEIGHT / 3);
         buttonRow.setVisible(true);
         this.add(buttonRow);
     }
-
-//    private void methodThree() {
-//        b3.addActionListener(e -> {
-//            for (StudySubject s : this.studyLog.getStudySubjectList()) {
-//                JLabel label = new JLabel();
-//                label.setText("\t" + s.getSubject());
-//                label.setVisible(true);
-//                redPanel.add(label);
-//            }
-//        });
-//    }
-
-//    private void methodOne() {
-//        b1.addActionListener(e -> {
-//            JLabel label = new JLabel();
-//            label.setText("Nobody");
-//            label.setVisible(true);
-//            redPanel.add(label);
-//
-//            if (e.getSource() == b1) {
-//                StudySubject newSubject = new StudySubject();
-//                newSubject.setSubject(textField.getText());
-//                this.studyLog.addStudySubjectList(newSubject);
-//            }
-//        });
-//    }
 
     // Inspired by SmartHome
     //EFFECTS: creates and returns row with button included
@@ -192,35 +166,53 @@ public class StudyLogGUI extends JFrame implements ActionListener {
                 studyingMaterial.setStudyEndDateTime(LocalDateTime.now());
                 label.setText("Please enter what you studied then click \"Start/End Studying\": ");
                 label.setVisible(true);
-                label.setVisible(true);
             } else if (number % 4 == 3) {
                 studyingMaterial.setStudyContent(textField.getText());
                 this.studyLog.addStudyTask(studyingMaterial);
                 printStudiedMaterial();
+                label.setVisible(true);
             }
             number++;
         } else if (e.getSource() == b3) {
             String string = "";
+            Set<String> stringSet = new HashSet<>();
             for (StudySubject s : this.studyLog.getStudySubjectList()) {
-                label.setText(string + "\n" + "-" + s.getSubject());
-                string += label.getText();
-//                if (!label.getText().contains("Successfully added") & !label.getText().contains("Started from")) {
-//                    label.setText(string + "\n" + "-" + s.getSubject());
-//                    string += label.getText();
-//                } else {
-//                    label.setText("\n" + "-" + s.getSubject());
-//                }
-                label.setVisible(true);
+                String subject = string + "\n" + "-" + s.getSubject();
+                stringSet.add(subject);
             }
+            for (String s: stringSet) {
+                string += s;
+            }
+            label.setText(string);
+            label.setVisible(true);
         } else if (e.getSource() == b4) {
-            List<StudiedMaterial> studyList = this.studyLog.getStudyList();
-            String s = "";
-            for (StudiedMaterial studiedMaterial: studyList) {
+            String string = "";
+            Set<String> stringSet = new HashSet<>();
+            for (StudiedMaterial studiedMaterial: this.studyLog.getStudyList()) {
                 studyingMaterial = studiedMaterial;
                 printStudiedMaterial();
-                s += label.getText();
+                stringSet.add(label.getText());
             }
-            label.setText(s);
+            for (String s: stringSet) {
+                string += s;
+            }
+            label.setText(string);
+            label.setVisible(true);
+        } else if (e.getSource() == b5) {
+            String string = "";
+            Set<String> stringSet = new HashSet<>();
+            for (StudiedMaterial studiedMaterial: this.studyLog.getStudyList()) {
+                if (studiedMaterial.getStudySubject().getSubject().equals(textField.getText())) {
+                    studyingMaterial = studiedMaterial;
+                    printStudiedMaterial();
+                    stringSet.add(label.getText());
+                }
+            }
+
+            for (String s: stringSet) {
+                string += s;
+            }
+            label.setText(string);
             label.setVisible(true);
         }
     }
