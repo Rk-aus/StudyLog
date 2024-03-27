@@ -267,7 +267,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         String string = "";
         Set<String> stringSet = new HashSet<>();
         for (StudySubject s : studyLog.getStudySubjectList()) {
-            String subject = string + "-" + s.getSubject();
+            String subject = string + "-" + s.getSubject() + "\n";
             stringSet.add(subject);
         }
         for (String s: stringSet) {

@@ -1,40 +1,57 @@
 {
-    "subjectList": ["MATh"],
+    "subjectList": [
+        "MATH",
+        "WRDS"
+    ],
     "studyList": [
         {
-            "studyTime": 145,
-            "studyEndDateTime": "2024-03-27T11:41:10.481395",
-            "studyStartDateTime": "2024-03-27T11:41:10.354336",
-            "studySubject": {"subject": "MATh"},
-            "studyContent": "MATh"
+            "studyTime": 240,
+            "studyEndDateTime": "2024-03-27T14:40:05.362799",
+            "studyStartDateTime": "2024-03-27T14:40:05.140668",
+            "studySubject": {"subject": "MATH"},
+            "studyContent": "MATH"
         },
         {
-            "studyTime": 133,
-            "studyEndDateTime": "2024-03-27T11:41:11.033782",
-            "studyStartDateTime": "2024-03-27T11:41:10.900596",
-            "studySubject": {"subject": "MATh"},
-            "studyContent": "MATh"
+            "studyTime": 310,
+            "studyEndDateTime": "2024-03-27T14:40:06.141458",
+            "studyStartDateTime": "2024-03-27T14:40:05.831222",
+            "studySubject": {"subject": "MATH"},
+            "studyContent": "MATH"
         },
         {
-            "studyTime": 146,
-            "studyEndDateTime": "2024-03-27T11:41:11.575703",
-            "studyStartDateTime": "2024-03-27T11:41:11.429881",
-            "studySubject": {"subject": "MATh"},
-            "studyContent": "MATh"
+            "studyTime": 164,
+            "studyEndDateTime": "2024-03-27T14:40:06.940035",
+            "studyStartDateTime": "2024-03-27T14:40:06.776386",
+            "studySubject": {"subject": "MATH"},
+            "studyContent": "MATH"
         },
         {
-            "studyTime": 156,
-            "studyEndDateTime": "2024-03-27T11:41:12.471534",
-            "studyStartDateTime": "2024-03-27T11:41:12.315451",
-            "studySubject": {"subject": "MATh"},
-            "studyContent": "MATh"
+            "studyTime": 163,
+            "studyEndDateTime": "2024-03-27T14:40:07.753514",
+            "studyStartDateTime": "2024-03-27T14:40:07.590189",
+            "studySubject": {"subject": "MATH"},
+            "studyContent": "MATH"
         },
         {
-            "studyTime": 157,
-            "studyEndDateTime": "2024-03-27T11:41:13.069073",
-            "studyStartDateTime": "2024-03-27T11:41:12.912031",
-            "studySubject": {"subject": "MATh"},
-            "studyContent": "MATh"
+            "studyTime": 149,
+            "studyEndDateTime": "2024-03-27T14:40:38.759756",
+            "studyStartDateTime": "2024-03-27T14:40:38.627219",
+            "studySubject": {"subject": "WRDS"},
+            "studyContent": "WRDS"
+        },
+        {
+            "studyTime": 677,
+            "studyEndDateTime": "2024-03-27T14:40:39.918131",
+            "studyStartDateTime": "2024-03-27T14:40:39.241797",
+            "studySubject": {"subject": "WRDS"},
+            "studyContent": "WRDS"
+        },
+        {
+            "studyTime": 295,
+            "studyEndDateTime": "2024-03-27T14:40:41.033799",
+            "studyStartDateTime": "2024-03-27T14:40:40.738882",
+            "studySubject": {"subject": "WRDS"},
+            "studyContent": "WRDS"
         }
     ]
 }
