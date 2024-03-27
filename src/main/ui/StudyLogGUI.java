@@ -31,6 +31,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
     private JTextArea label;
     private JPanel redPanel;
     private JPanel nextPanel;
+    private JLabel label0;
     private int number = 0;
     private long startTime;
     private StudiedMaterial studyingMaterial;
@@ -57,6 +58,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         redPanel = new JPanel();
         redPanel.setBounds(0,HEIGHT / 3 + 30, WIDTH, HEIGHT - (HEIGHT / 3 + 30));
         nextPanel.setBounds(0,HEIGHT / 3, WIDTH, 30);
+        redPanel.setBackground(Color.RED);
         nextPanel.setBackground(Color.GRAY);
         nextPanel.setVisible(true);
         redPanel.setVisible(true);
@@ -73,12 +75,6 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         nextPanel.add(textField);
         textField.setPreferredSize(new Dimension(100, 20));
 
-
-        ImageIcon icon = new ImageIcon("data/GoodJob.jpeg");
-        JLabel label0 = new JLabel();
-        label0.setIcon(icon);
-        redPanel.add(label0);
-
         setVisible(true);
     }
 
@@ -93,13 +89,23 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         b6 = new JButton("Save");
         b7 = new JButton("Load");
 
-        JPanel buttonRow = formatButtonRow(b1);
+//        JPanel buttonRow = formatButtonRow(b1);
+        JPanel buttonRow = new JPanel();
+        buttonRow.add(b1);
         buttonRow.add(b2);
         buttonRow.add(b3);
         buttonRow.add(b4);
         buttonRow.add(b5);
         buttonRow.add(b6);
         buttonRow.add(b7);
+        ImageIcon icon = new ImageIcon("data/GoodJob.jpeg");
+        label0 = new JLabel();
+        label0.setIcon(icon);
+        label0.setPreferredSize(new Dimension(150, 120));
+        label0.setVisible(false);
+        buttonRow.add(label0);
+        label0.setHorizontalAlignment(JLabel.CENTER);
+        label0.setVerticalAlignment(JLabel.CENTER);
         buttonRow.setSize(WIDTH, HEIGHT / 6);
 
         b1.addActionListener(this);
@@ -139,6 +145,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
+            label0.setVisible(false);
             StudySubject newSubject = new StudySubject();
             newSubject.setSubject(textField.getText());
             this.studyLog.addStudySubjectList(newSubject);
@@ -146,7 +153,8 @@ public class StudyLogGUI extends JFrame implements ActionListener {
             label.setVisible(true);
         } else if (e.getSource() == b2) {
             if (number % 4 == 0) {
-                label.setText("\nPlease enter the name of the Subject you will study then click \"Start/End Studying\": ");
+                label0.setVisible(false);
+                label.setText("Please enter the name of the Subject you will study then click \"Start/End Studying\": ");
                 label.setVisible(true);
             } else if (number % 4 == 1) {
                 studyingMaterial = new StudiedMaterial();
@@ -164,16 +172,17 @@ public class StudyLogGUI extends JFrame implements ActionListener {
             } else if (number % 4 == 2) {
                 studyingMaterial.setStudyTime(System.currentTimeMillis() - startTime);
                 studyingMaterial.setStudyEndDateTime(LocalDateTime.now());
-                label.setText("Please enter what you studied then click \"Start/End Studying\": ");
+                label.setText("Please enter what you have studied then click \"Start/End Studying\": ");
                 label.setVisible(true);
             } else if (number % 4 == 3) {
                 studyingMaterial.setStudyContent(textField.getText());
                 this.studyLog.addStudyTask(studyingMaterial);
                 printStudiedMaterial();
-                label.setVisible(true);
+                label0.setVisible(true);
             }
             number++;
         } else if (e.getSource() == b3) {
+            label0.setVisible(false);
             String string = "";
             Set<String> stringSet = new HashSet<>();
             for (StudySubject s : this.studyLog.getStudySubjectList()) {
@@ -186,6 +195,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
             label.setText(string);
             label.setVisible(true);
         } else if (e.getSource() == b4) {
+            label0.setVisible(false);
             String string = "";
             Set<String> stringSet = new HashSet<>();
             for (StudiedMaterial studiedMaterial: this.studyLog.getStudyList()) {
@@ -199,6 +209,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
             label.setText(string);
             label.setVisible(true);
         } else if (e.getSource() == b5) {
+            label0.setVisible(false);
             String string = "";
             Set<String> stringSet = new HashSet<>();
             for (StudiedMaterial studiedMaterial: this.studyLog.getStudyList()) {
