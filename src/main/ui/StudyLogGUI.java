@@ -4,19 +4,23 @@ import exceptions.NoSuchNameException;
 import model.StudiedMaterial;
 import model.StudyLog;
 import model.StudySubject;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 // Inspired by SmartHome
 public class StudyLogGUI extends JFrame implements ActionListener {
+    private static final String JSON_STORE = "./data/studylog.json";
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 800;
     private StudyLog studyLog;
@@ -32,9 +36,13 @@ public class StudyLogGUI extends JFrame implements ActionListener {
     private JPanel redPanel;
     private JPanel nextPanel;
     private JLabel label0;
+    private JScrollPane scrollPane;
     private int number = 0;
     private long startTime;
     private StudiedMaterial studyingMaterial;
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public static void main(String[] args)  {
         new StudyLogGUI();
@@ -50,7 +58,12 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         super("StudyLog Console");
         setSize(WIDTH, HEIGHT);
         setLayout(null);
+        setLocationRelativeTo(null);
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         studyLog = new StudyLog();
 
@@ -58,7 +71,7 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         redPanel = new JPanel();
         redPanel.setBounds(0,HEIGHT / 3 + 30, WIDTH, HEIGHT - (HEIGHT / 3 + 30));
         nextPanel.setBounds(0,HEIGHT / 3, WIDTH, 30);
-        redPanel.setBackground(Color.RED);
+        redPanel.setBackground(Color.WHITE);
         nextPanel.setBackground(Color.GRAY);
         nextPanel.setVisible(true);
         redPanel.setVisible(true);
@@ -66,9 +79,17 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         this.add(nextPanel);
         label = new JTextArea();
         label.setVisible(true);
-        label.setPreferredSize(new Dimension(WIDTH, 500));
+        label.setEditable(false);
+        scrollPane = new JScrollPane(label);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBounds(0,HEIGHT / 3 + 30, WIDTH, HEIGHT - (HEIGHT / 3 + 30));
+        scrollPane.setPreferredSize(new Dimension(WIDTH, 1000));
 
-        redPanel.add(label);
+        label.setPreferredSize(new Dimension(WIDTH, 1000));
+
+        getContentPane().setLayout(null);
+        getContentPane().add(scrollPane);
 
         placeHomeButtons();
         textField = new JTextArea();
@@ -121,23 +142,13 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         this.add(buttonRow);
     }
 
-    // Inspired by SmartHome
-    //EFFECTS: creates and returns row with button included
-    public JPanel formatButtonRow(JButton b) {
-        JPanel p = new JPanel();
-        p.setLayout(new FlowLayout());
-        p.add(b);
-
-        return p;
-    }
-
     // EFFECTS: prints the given StudiedMaterial
     private void printStudiedMaterial() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String s0 = "Study Subject: " + studyingMaterial.getStudySubject().getSubject();
         String s1 = "\nStudy Content: " + studyingMaterial.getStudyContent();
         String s2 = "\nStarted from: " + formatter.format(studyingMaterial.getStudyStartDateTime());
-        String s3 = "\nEnded at:" + formatter.format(studyingMaterial.getStudyEndDateTime());
+        String s3 = "\nEnded at: " + formatter.format(studyingMaterial.getStudyEndDateTime());
         String s4 = "\nTotal Study Time: " + studyingMaterial.convertStudyTime();
         label.setText("\n" + s0 + "\n" + s1 + "\n" + s2 + "\n" + s3 + "\n" + s4 + "\n");
     }
@@ -225,6 +236,26 @@ public class StudyLogGUI extends JFrame implements ActionListener {
             }
             label.setText(string);
             label.setVisible(true);
+        } else if (e.getSource() == b6) {
+            try {
+                jsonWriter.open();
+                jsonWriter.write(studyLog);
+                jsonWriter.close();
+                label.setText("Saved StudyLog to " + JSON_STORE);
+                label.setVisible(true);
+            } catch (FileNotFoundException exception) {
+                label.setText("Unable to write to file: " + JSON_STORE);
+                label.setVisible(true);
+            }
+        } else if (e.getSource() == b7) {
+            try {
+                this.studyLog = jsonReader.read();
+                label.setText("Loaded StudyLog from " + JSON_STORE);
+                label.setVisible(true);
+            } catch (IOException exception) {
+                label.setText("Unable to read from file: " + JSON_STORE);
+                label.setVisible(true);
+            }
         }
     }
 }
