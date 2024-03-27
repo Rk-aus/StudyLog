@@ -57,3 +57,22 @@ studying, the study subject and the specific study content into my study log as 
 - As a user, I want to be able to see my study rating visually
 - As a user, I want to be able to have achievement medals for outstanding accomplishments (e.g. 100 hours study time or 30 days
   study streak)
+
+## ~ Phase 3 ~ Instructions for Grader:
+- You can generate the first required action related to 
+the user story "adding multiple Xs to a Y" by first putting
+the name of the study subject in the editable text box at
+the middle. Then, please click the "Add Subject" button. 
+After that, please click the "Start/End Studying" button 
+and please follow the instructions shown in the uneditable 
+text box to add a study material in the StudyLog.
+- You can generate the second required action related to 
+the user story "adding multiple Xs to a Y" by putting a name
+of an added subject in the editable text box and clicking 
+the "Filter Study Log" button.
+- You can locate my visual component by clicking the
+  "Start/End Studying" button multiple times in a row.
+- You can save the state of my application by clicking the
+  "Save" button.
+- You can reload the state of my application by clicking the
+  "Load" button.

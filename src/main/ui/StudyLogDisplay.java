@@ -198,7 +198,7 @@ public class StudyLogDisplay {
     }
 
     // Inspired by JsonSerializationDemo
-    // EFFECTS: prints the StudyLog
+    // EFFECTS: saves the StudyLog
     private void saveStudyLog() {
         try {
             jsonWriter.open();
@@ -211,7 +211,7 @@ public class StudyLogDisplay {
     }
 
     // Inspired by JsonSerializationDemo
-    // EFFECTS: prints the StudyLog
+    // EFFECTS: loads the StudyLog
     private void loadStudyLog() {
         try {
             this.studyLog = jsonReader.read();

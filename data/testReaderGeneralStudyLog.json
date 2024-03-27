@@ -6,15 +6,15 @@
     "studyList": [
         {
             "studyTime": 10,
-            "studyEndDateTime": "2024-03-11T06:24:20.436689",
-            "studyStartDateTime": "2024-03-11T06:24:20.436689",
+            "studyEndDateTime": "2024-03-27T14:23:43.850712",
+            "studyStartDateTime": "2024-03-27T14:23:43.850712",
             "studySubject": {"subject": "MATH"},
             "studyContent": "CLP"
         },
         {
             "studyTime": 100,
-            "studyEndDateTime": "2024-03-11T06:24:20.436689",
-            "studyStartDateTime": "2024-03-11T06:24:20.436689",
+            "studyEndDateTime": "2024-03-27T14:23:43.850712",
+            "studyStartDateTime": "2024-03-27T14:23:43.850712",
             "studySubject": {"subject": "CPSC"},
             "studyContent": "Project"
         }

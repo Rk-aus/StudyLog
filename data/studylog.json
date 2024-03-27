@@ -1,14 +1,40 @@
 {
-    "subjectList": [
-        "MATH",
-        "SCIE",
-        "WRDS"
-    ],
-    "studyList": [{
-        "studyTime": 939,
-        "studyEndDateTime": "2024-03-27T08:43:44.311180",
-        "studyStartDateTime": "2024-03-27T08:43:43.387452",
-        "studySubject": {"subject": "MATH"},
-        "studyContent": "CLP"
-    }]
+    "subjectList": ["MATh"],
+    "studyList": [
+        {
+            "studyTime": 145,
+            "studyEndDateTime": "2024-03-27T11:41:10.481395",
+            "studyStartDateTime": "2024-03-27T11:41:10.354336",
+            "studySubject": {"subject": "MATh"},
+            "studyContent": "MATh"
+        },
+        {
+            "studyTime": 133,
+            "studyEndDateTime": "2024-03-27T11:41:11.033782",
+            "studyStartDateTime": "2024-03-27T11:41:10.900596",
+            "studySubject": {"subject": "MATh"},
+            "studyContent": "MATh"
+        },
+        {
+            "studyTime": 146,
+            "studyEndDateTime": "2024-03-27T11:41:11.575703",
+            "studyStartDateTime": "2024-03-27T11:41:11.429881",
+            "studySubject": {"subject": "MATh"},
+            "studyContent": "MATh"
+        },
+        {
+            "studyTime": 156,
+            "studyEndDateTime": "2024-03-27T11:41:12.471534",
+            "studyStartDateTime": "2024-03-27T11:41:12.315451",
+            "studySubject": {"subject": "MATh"},
+            "studyContent": "MATh"
+        },
+        {
+            "studyTime": 157,
+            "studyEndDateTime": "2024-03-27T11:41:13.069073",
+            "studyStartDateTime": "2024-03-27T11:41:12.912031",
+            "studySubject": {"subject": "MATh"},
+            "studyContent": "MATh"
+        }
+    ]
 }
