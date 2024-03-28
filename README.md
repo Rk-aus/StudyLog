@@ -74,8 +74,8 @@ the "Filter Study Log" button.
   "Start/End Studying" button multiple times in a row.
 - You can save the state of my application by clicking the
   "Save" button.
-- You can reload the state of my application by clicking the
-  "Load" button.
+- You can reload the state of my application by clicking 
+the "Load" button.
 
 ### Citation: 
 https://www.youtube.com/watch?v=Kmgo00avvEw
