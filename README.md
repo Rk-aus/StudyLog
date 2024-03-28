@@ -76,3 +76,7 @@ the "Filter Study Log" button.
   "Save" button.
 - You can reload the state of my application by clicking the
   "Load" button.
+
+### Citation: 
+https://www.youtube.com/watch?v=Kmgo00avvEw
+https://www.ac-illust.com/main/search_result.php?word=goodjob
