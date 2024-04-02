@@ -91,3 +91,21 @@ https://www.ac-illust.com/main/search_result.php?word=goodjob
 - Added Subject to the SubjectList.
 - Added Study Task to the StudyLog.
 - Searched for the Subject in the SubjectList.
+
+## ~ Phase 4: Task 3 ~
+There are three changes I would like to make if I had more time.
+Firstly, I would like to delete the association from StudyLogDisplay to StudySubject.
+As we can see from the associations of StudyLogGUI, there is no association to StudySubject.
+During the implementation of StudyLogGUI, I have realized that the class did not need an association and therefore I 
+also realized that StudyLogDisplay could be refactored as well. Generally, redundant association increases coupling
+unnecessarily, so the association should be refactored.
+Next, I would like to delete the association from StudySubject to itself. 
+This was a design mistake also made when implementing StudyLogDisplay.
+Since StudyLog already has a direct association to StudySubject and the StudySubjectList does not change 
+depending on the StudiedMaterial, it is better to delete the association from StudySubject to itself to loosen 
+coupling.
+Lastly, I would like to refactor StudyLogGUI because I believe it violates the Single Responsibility Principle.
+This is evident from the number of fields it has which is twenty-one. 
+Buttons and text fields could be in a new class to achieve higher cohesion. 
+
+

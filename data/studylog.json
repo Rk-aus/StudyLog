@@ -1,57 +1,57 @@
 {
     "subjectList": [
         "MATH",
-        "WRDS"
+        "SCIE"
     ],
     "studyList": [
         {
-            "studyTime": 240,
-            "studyEndDateTime": "2024-03-27T14:40:05.362799",
-            "studyStartDateTime": "2024-03-27T14:40:05.140668",
+            "studyTime": 152,
+            "studyEndDateTime": "2024-04-02T11:23:57.817767",
+            "studyStartDateTime": "2024-04-02T11:23:57.678112",
             "studySubject": {"subject": "MATH"},
             "studyContent": "MATH"
         },
         {
-            "studyTime": 310,
-            "studyEndDateTime": "2024-03-27T14:40:06.141458",
-            "studyStartDateTime": "2024-03-27T14:40:05.831222",
+            "studyTime": 132,
+            "studyEndDateTime": "2024-04-02T11:23:58.456823",
+            "studyStartDateTime": "2024-04-02T11:23:58.324725",
             "studySubject": {"subject": "MATH"},
             "studyContent": "MATH"
         },
         {
-            "studyTime": 164,
-            "studyEndDateTime": "2024-03-27T14:40:06.940035",
-            "studyStartDateTime": "2024-03-27T14:40:06.776386",
+            "studyTime": 123,
+            "studyEndDateTime": "2024-04-02T11:23:58.980593",
+            "studyStartDateTime": "2024-04-02T11:23:58.857826",
             "studySubject": {"subject": "MATH"},
             "studyContent": "MATH"
         },
         {
-            "studyTime": 163,
-            "studyEndDateTime": "2024-03-27T14:40:07.753514",
-            "studyStartDateTime": "2024-03-27T14:40:07.590189",
+            "studyTime": 109,
+            "studyEndDateTime": "2024-04-02T11:23:59.542749",
+            "studyStartDateTime": "2024-04-02T11:23:59.433206",
             "studySubject": {"subject": "MATH"},
             "studyContent": "MATH"
         },
         {
-            "studyTime": 149,
-            "studyEndDateTime": "2024-03-27T14:40:38.759756",
-            "studyStartDateTime": "2024-03-27T14:40:38.627219",
-            "studySubject": {"subject": "WRDS"},
-            "studyContent": "WRDS"
+            "studyTime": 139,
+            "studyEndDateTime": "2024-04-02T11:24:07.771604",
+            "studyStartDateTime": "2024-04-02T11:24:07.632291",
+            "studySubject": {"subject": "SCIE"},
+            "studyContent": "SCIE"
         },
         {
-            "studyTime": 677,
-            "studyEndDateTime": "2024-03-27T14:40:39.918131",
-            "studyStartDateTime": "2024-03-27T14:40:39.241797",
-            "studySubject": {"subject": "WRDS"},
-            "studyContent": "WRDS"
+            "studyTime": 141,
+            "studyEndDateTime": "2024-04-02T11:24:08.291474",
+            "studyStartDateTime": "2024-04-02T11:24:08.150690",
+            "studySubject": {"subject": "SCIE"},
+            "studyContent": "SCIE"
         },
         {
-            "studyTime": 295,
-            "studyEndDateTime": "2024-03-27T14:40:41.033799",
-            "studyStartDateTime": "2024-03-27T14:40:40.738882",
-            "studySubject": {"subject": "WRDS"},
-            "studyContent": "WRDS"
+            "studyTime": 131,
+            "studyEndDateTime": "2024-04-02T11:24:08.813579",
+            "studyStartDateTime": "2024-04-02T11:24:08.682243",
+            "studySubject": {"subject": "SCIE"},
+            "studyContent": "SCIE"
         }
     ]
 }
