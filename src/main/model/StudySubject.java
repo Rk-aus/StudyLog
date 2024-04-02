@@ -9,9 +9,8 @@ import java.util.ArrayList;
 // inspired by JsonSerializationDemo
 // Represents the studying subject and list of subjects
 public class StudySubject implements Writable {
-
-    String subject;
-    ArrayList<StudySubject> subjectList;
+    private String subject;
+    private ArrayList<StudySubject> subjectList;
 
     public StudySubject() {
         this.subject = null;

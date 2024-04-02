@@ -363,14 +363,12 @@ public class StudyLogGUI extends JFrame implements ActionListener, WindowListene
         uneditableTextArea.setText("\n" + s0 + "\n" + s1 + "\n" + s2 + "\n" + s3 + "\n" + s4 + "\n");
     }
 
+    // EFFECTS: do nothing when the window is opened
     @Override
     public void windowOpened(WindowEvent e) {
-        for (Event event: EventLog.getInstance()) {
-            System.out.println(event.getDate());
-            System.out.println(event.getDescription());
-        }
     }
 
+    // EFFECTS: prints the EventLog to the console when window is closing
     @Override
     public void windowClosing(WindowEvent e) {
         for (Event event: EventLog.getInstance()) {
@@ -379,25 +377,30 @@ public class StudyLogGUI extends JFrame implements ActionListener, WindowListene
         }
     }
 
+    // EFFECTS: do nothing when the window is closed
     @Override
     public void windowClosed(WindowEvent e) {
     }
 
+    // EFFECTS: do nothing when the window is iconified
     @Override
     public void windowIconified(WindowEvent e) {
 
     }
 
+    // EFFECTS: do nothing when the window is deiconified
     @Override
     public void windowDeiconified(WindowEvent e) {
 
     }
 
+    // EFFECTS: do nothing when the window is activated
     @Override
     public void windowActivated(WindowEvent e) {
 
     }
 
+    // EFFECTS: do nothing when the window is deactivated
     @Override
     public void windowDeactivated(WindowEvent e) {
 

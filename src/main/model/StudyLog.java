@@ -18,7 +18,7 @@ public class StudyLog implements Writable {
 
     // EFFECTS: constructs a StudyLog object
     public StudyLog() {
-        this.studyList = new ArrayList<>();
+        studyList = new ArrayList<>();
         subjectList = new ArrayList<>();
     }
 
