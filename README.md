@@ -80,3 +80,14 @@ the "Load" button.
 ### Citation: 
 https://www.youtube.com/watch?v=Kmgo00avvEw
 https://www.ac-illust.com/main/search_result.php?word=goodjob
+
+## ~ Phase 4: Task 2 ~
+- Set Study Time for the StudiedMaterial.
+- Set Study Start Time for the StudiedMaterial.
+- Set Study End Time for the StudiedMaterial.
+- Set Study Content for the StudiedMaterial.
+- Set Study Subject for the StudiedMaterial.
+- Set Subject for the StudySubject.
+- Added Subject to the SubjectList.
+- Added Study Task to the StudyLog.
+- Searched for the Subject in the SubjectList.

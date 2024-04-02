@@ -1,6 +1,8 @@
 package ui;
 
 import exceptions.NoSuchNameException;
+import model.Event;
+import model.EventLog;
 import model.StudiedMaterial;
 import model.StudyLog;
 import model.StudySubject;
@@ -11,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -20,7 +24,7 @@ import java.util.Set;
 
 // Inspired by SmartHome
 // This class displays the StudyLogGUI application
-public class StudyLogGUI extends JFrame implements ActionListener {
+public class StudyLogGUI extends JFrame implements ActionListener, WindowListener {
     private static final String JSON_STORE = "./data/studylog.json";
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 800;
@@ -72,6 +76,8 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         instantiateScrollPane();
         instantiateButtons();
         instantiateEditableTextArea();
+        addWindowListener(this);
+        windowClosed(new WindowEvent(this, 202));
 
         setVisible(true);
     }
@@ -355,5 +361,45 @@ public class StudyLogGUI extends JFrame implements ActionListener {
         String s3 = "\nEnded at: " + formatter.format(studyingMaterial.getStudyEndDateTime());
         String s4 = "\nTotal Study Time: " + studyingMaterial.convertStudyTime();
         uneditableTextArea.setText("\n" + s0 + "\n" + s1 + "\n" + s2 + "\n" + s3 + "\n" + s4 + "\n");
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        for (Event event: EventLog.getInstance()) {
+            System.out.println(event.getDate());
+            System.out.println(event.getDescription());
+        }
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        for (Event event: EventLog.getInstance()) {
+            System.out.println(event.getDate());
+            System.out.println(event.getDescription() + "\n");
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 }

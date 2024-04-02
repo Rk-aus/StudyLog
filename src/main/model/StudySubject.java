@@ -27,15 +27,18 @@ public class StudySubject implements Writable {
         return this.subjectList;
     }
 
-    // setters
+    // MODIFIES: this
+    // EFFECTS: sets the Study Subject and log it to the EventLog
     public void setSubject(String subject) {
         this.subject = subject;
+        EventLog.getInstance().logEvent(new Event("Set Subject for the StudySubject."));
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the given StudySubject to the list
+    // EFFECTS: adds the given StudySubject to the list and log it to the EventLog
     public void addSubject(StudySubject subject) {
         this.subjectList.add(subject);
+        EventLog.getInstance().logEvent(new Event("Added Subject to the SubjectList."));
     }
 
 

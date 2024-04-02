@@ -44,28 +44,42 @@ public class StudiedMaterial implements Writable {
         return this.studySubject;
     }
 
-    // setters
+    // MODIFIES: this
+    // EFFECTS: sets the Study Time and log it to the EventLog
     public void setStudyTime(long studyTime) {
         this.studyTime = studyTime;
+        EventLog.getInstance().logEvent(new Event("Set Study Time for the StudiedMaterial."));
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the Study Start Date Time and log it to the EventLog
     public void setStudyStartDateTime(LocalDateTime studyStartDateTime) {
         this.studyStartDateTime = studyStartDateTime;
+        EventLog.getInstance().logEvent(new Event("Set Study Start Time for the StudiedMaterial."));
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the Study End Date Time and log it to the EventLog
     public void setStudyEndDateTime(LocalDateTime studyEndDateTime) {
         this.studyEndDateTime = studyEndDateTime;
+        EventLog.getInstance().logEvent(new Event("Set Study End Time for the StudiedMaterial."));
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the Study Content and log it to the EventLog
     public void setStudyContent(String studyContent) {
         this.studyContent = studyContent;
+        EventLog.getInstance().logEvent(new Event("Set Study Content for the StudiedMaterial."));
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the Study Subject and log it to the EventLog
     public void setStudySubject(StudySubject studySubject) {
         this.studySubject = studySubject;
+        EventLog.getInstance().logEvent(new Event("Set Study Subject for the StudiedMaterial."));
     }
 
-    // EFFECTS: converts the studyTime to int
+    // EFFECTS: converts the studyTime to String
     public String convertStudyTime() {
         int second = (int) this.getStudyTime() / 1000;
         String seconds = String.valueOf(second);
@@ -81,6 +95,7 @@ public class StudiedMaterial implements Writable {
         } else {
             return seconds;
         }
+
     }
 
     // EFFECTS: converts second into minutes and seconds

@@ -32,20 +32,24 @@ public class StudyLog implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a StudyTask to the StudyLog
+    // EFFECTS: adds a StudyTask to the StudyLog and log it to the EventLog
     public void addStudyTask(StudiedMaterial studiedMaterial) {
         this.studyList.add(studiedMaterial);
+        EventLog.getInstance().logEvent(new Event("Added Study Task to the StudyLog."));
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the given StudySubject to the list
+    // EFFECTS: adds the given StudySubject to the list and log it to the EventLog
     public void addStudySubjectList(StudySubject studySubject) {
         this.subjectList.add(studySubject);
+        EventLog.getInstance().logEvent(new Event("Added Subject to the SubjectList."));
     }
 
-    // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject
+    // EFFECTS: finds the StudySubject with the given subject name and returns the StudySubject and log it to the
+    //          EventLog
     //          if the StudySubject is not found, throw a NoSuchNameException
     public StudySubject findSubject(String name) throws NoSuchNameException {
+        EventLog.getInstance().logEvent(new Event("Searched for the Subject in the SubjectList."));
         for (StudySubject subject: this.subjectList) {
             if (subject.getSubject().equals(name)) {
                 return subject;
