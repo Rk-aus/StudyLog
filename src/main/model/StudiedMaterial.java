@@ -71,7 +71,7 @@ public class StudiedMaterial implements Writable {
         this.studyContent = studyContent;
         EventLog.getInstance().logEvent(new Event("Set Study Content for the StudiedMaterial."));
     }
-
+ 
     // MODIFIES: this
     // EFFECTS: sets the Study Subject and log it to the EventLog
     public void setStudySubject(StudySubject studySubject) {
