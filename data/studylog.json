@@ -1,57 +1,30 @@
 {
     "subjectList": [
-        "MATH",
-        "SCIE"
+        "CPSC 210",
+        "SCIE 113",
+        "MATH 101"
     ],
     "studyList": [
         {
-            "studyTime": 152,
-            "studyEndDateTime": "2024-04-02T11:23:57.817767",
-            "studyStartDateTime": "2024-04-02T11:23:57.678112",
-            "studySubject": {"subject": "MATH"},
-            "studyContent": "MATH"
+            "studyTime": 297087,
+            "studyEndDateTime": "2024-04-12T19:30:27.914485",
+            "studyStartDateTime": "2024-04-12T19:25:30.840299",
+            "studySubject": {"subject": "CPSC 210"},
+            "studyContent": "Project"
         },
         {
-            "studyTime": 132,
-            "studyEndDateTime": "2024-04-02T11:23:58.456823",
-            "studyStartDateTime": "2024-04-02T11:23:58.324725",
-            "studySubject": {"subject": "MATH"},
-            "studyContent": "MATH"
+            "studyTime": 1077321,
+            "studyEndDateTime": "2024-04-12T19:48:45.399138",
+            "studyStartDateTime": "2024-04-12T19:30:48.077098",
+            "studySubject": {"subject": "SCIE 113"},
+            "studyContent": "Final Individual Project "
         },
         {
-            "studyTime": 123,
-            "studyEndDateTime": "2024-04-02T11:23:58.980593",
-            "studyStartDateTime": "2024-04-02T11:23:58.857826",
-            "studySubject": {"subject": "MATH"},
-            "studyContent": "MATH"
-        },
-        {
-            "studyTime": 109,
-            "studyEndDateTime": "2024-04-02T11:23:59.542749",
-            "studyStartDateTime": "2024-04-02T11:23:59.433206",
-            "studySubject": {"subject": "MATH"},
-            "studyContent": "MATH"
-        },
-        {
-            "studyTime": 139,
-            "studyEndDateTime": "2024-04-02T11:24:07.771604",
-            "studyStartDateTime": "2024-04-02T11:24:07.632291",
-            "studySubject": {"subject": "SCIE"},
-            "studyContent": "SCIE"
-        },
-        {
-            "studyTime": 141,
-            "studyEndDateTime": "2024-04-02T11:24:08.291474",
-            "studyStartDateTime": "2024-04-02T11:24:08.150690",
-            "studySubject": {"subject": "SCIE"},
-            "studyContent": "SCIE"
-        },
-        {
-            "studyTime": 131,
-            "studyEndDateTime": "2024-04-02T11:24:08.813579",
-            "studyStartDateTime": "2024-04-02T11:24:08.682243",
-            "studySubject": {"subject": "SCIE"},
-            "studyContent": "SCIE"
+            "studyTime": 6098061,
+            "studyEndDateTime": "2024-04-12T21:33:32.731656",
+            "studyStartDateTime": "2024-04-12T19:51:54.670137",
+            "studySubject": {"subject": "MATH 101"},
+            "studyContent": "WW12 Couldn't finish haha"
         }
     ]
 }
